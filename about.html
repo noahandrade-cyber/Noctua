@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Decouvrez l'histoire de NOCTUA et la vision derriere une marque pensee pour ameliorer le sommeil de facon naturelle.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A propos de NOCTUA">
+<meta property="og:description" content="L'histoire et la vision d'une marque dediee au sommeil naturel.">
+<meta name="twitter:card" content="summary">
+<title>A propos de NOCTUA</title>
+
+<style>
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 0 18px;
+    height: 100px;
+    background: #050d1f;
+}
+
+.logo img {
+    height: 85px;
+}
+
+/* NAV */
+.header-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: 300;
+    position: relative;
+}
+
+.header-right a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, #ffd700, #b8860b);
+}
+
+.header-right a:hover {
+    color: #eee;
+}
+
+.header-right a:hover::after {
+    width: 0;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #050d1f;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    flex-direction: column;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255,215,0,0.1);
+    color: #ffd700;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+/* PANIER */
+.cart {
+    margin-left: 0;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #eee;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.cart span {
+    white-space: nowrap;
+}
+
+.cart:hover {
+    color: #eee;
+}
+
+.cart svg {
+    transition: none;
+}
+
+.cart:hover svg {
+    transform: none;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #0c0c1d, #1a0f0f);
+    color: #ddd;
+    padding-top: 100px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 24px auto 60px;
+    padding: 20px;
+}
+
+a {
+    color: #d4a64a;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+h1 {
+    color: #f2c66d;
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #f2c66d;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        height: 44px;
+        padding: 3px 6px;
+        gap: 6px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        background: #031235;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .header-right {
+        gap: 3px;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        margin: 0 1px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .header-right > a,
+    .dropdown > a {
+        display: block;
+        max-width: 32px;
+        font-size: 8px;
+        line-height: 1.1;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .cart {
+        margin-left: 0;
+        margin-right: 0;
+        gap: 3px;
+        font-size: 10.5px;
+        min-width: 86px;
+        justify-content: flex-end;
+    }
+
+    .cart svg {
+        width: 11px;
+        height: 11px;
+        margin-top: 0;
+    }
+
+    .cart span {
+        display: block;
+        width: 68px;
+        line-height: 1;
+        white-space: normal;
+        text-align: left;
+    }
+
+    body {
+        padding-top: 44px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1120px) {
+    .logo img {
+        height: 72px;
+    }
+
+    .header-right {
+        gap: 16px;
+    }
+
+    .header-right a,
+    .cart {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-right {
+        gap: 4px;
+    }
+
+    .header-right > a,
+    .dropdown > a {
+        max-width: 32px;
+        font-size: 7.5px;
+    }
+
+    .logo img {
+        height: 28px;
+    }
+
+    .cart {
+        min-width: 78px;
+        font-size: 9px;
+    }
+
+    .cart span {
+        width: 62px;
+    }
+
+    .cart svg {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.legal-footer {
+    margin-top: 32px;
+    padding: 18px 12px 24px;
+    text-align: center;
+    color: #cfcfcf;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+    <div class="logo">
+        <img src="images/logo.png" alt="NOCTUA">
+    </div>
+
+    <div class="header-right">
+        <a href="#">Le Rituel cocon</a>
+
+        <div class="dropdown">
+            <a href="#">Produits ▼</a>
+            <div class="dropdown-content">
+                <a href="#">Rituel sommeil</a>
+                <a href="#">Rituel bien-etre</a>
+                <a href="#">Rituel cocooning</a>
+            </div>
+        </div>
+
+        <a href="about.html">Notre Histoire</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <a class="cart" href="cart.html">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         width="20" height="20" 
+         fill="none" 
+         stroke="currentColor" 
+         stroke-width="2" 
+         stroke-linecap="round" 
+         stroke-linejoin="round" 
+         viewBox="0 0 24 24">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.5L23 6H6"></path>
+    </svg>
+
+    <span>Mon Panier</span>
+</a>
+</header>
+
+<div class="container">
+  <a href="index.html">← Retour a l'accueil</a>
+
+  <h1>Bienvenue dans le sanctuaire de vos nuits</h1>
+
+  <h2>L'histoire de Noctua (Le "Pourquoi")</h2>
+  <p>
+    "Tout a commence par une conviction simple : la nuit n'est pas juste une parenthese, c'est le moment le plus precieux de notre journee. C'est la que l'on se retrouve, que l'on depose les armes et que l'on se regenere.
+    Pourtant, pour beaucoup d'entre nous, le sommeil est devenu une source de stress. On cherche le repos, mais on trouve l'agitation. J'ai cree Noctua pour changer cela. Pour transformer le 'devoir dormir' en un 'plaisir de se retrouver'."
+  </p>
+
+  <h2>Pourquoi "Noctua by Didy" ? (La Connexion)</h2>
+  <p>
+    "Noctua, c'est la petite chouette de la mythologie, celle qui veille sur l'obscurite avec sagesse et serenite. Elle est le symbole de cette protection que je veux vous offrir chaque soir.
+    By Didy, c'est ma touche personnelle. Didy, c'est moi. Derriere chaque box, il y a ma selection passionnee, mes tests rigoureux et mon envie sincere de vous glisser dans un cocon de bien-etre. Je ne vous vends pas des produits, je vous partage mes rituels."
+  </p>
+
+  <h2>La Promesse (Le "Cocon")</h2>
+  <p>
+    "Chaque mois, la box Noctua vous accompagne vers un sommeil profond et reparateur. Imaginez une brume d'oreiller aux plantes sacrees, une infusion aux notes apaisantes, un accessoire de soie ou un guide de meditation... Tout est pense pour creer votre Rituel Cocon.
+    Parce que vous meritez de fermer les yeux avec le sourire, et de les ouvrir avec energie."
+  </p>
+</div>
+
+<footer class="legal-footer">© 2026 NOCTUA. Tous droits reserves.</footer>
+</body>
+</html>
