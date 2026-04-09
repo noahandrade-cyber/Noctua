@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Découvrez comment NOCTUA collecte, utilise et protège vos données personnelles.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Politique de confidentialité | NOCTUA">
+<meta property="og:description" content="Informations sur la collecte et la protection de vos données chez NOCTUA.">
+<meta name="twitter:card" content="summary">
+<title>Politique de confidentialité | NOCTUA</title>
+
+<style>
+    /* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 0 18px;
+    height: 100px;
+    background: #050d1f;
+}
+
+.logo img {
+    height: 85px;
+}
+
+/* NAV */
+.header-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: 300;
+    position: relative;
+}
+
+.header-right a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, #ffd700, #b8860b);
+}
+
+.header-right a:hover {
+    color: #eee;
+}
+
+.header-right a:hover::after {
+    width: 0;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #050d1f;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    flex-direction: column;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255,215,0,0.1);
+    color: #ffd700;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+/* PANIER */
+.cart {
+    margin-left: 0;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #eee;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.cart span {
+    white-space: nowrap;
+}
+
+.cart:hover {
+    color: #eee;
+}
+.cart svg {
+    transition: none;
+}
+
+.cart:hover svg {
+    transform: none;
+}
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #0c0c1d, #1a0f0f);
+        color: #ddd;
+        padding-top: 100px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 24px auto 60px;
+        padding: 20px;
+    }
+
+    @media (max-width: 900px) {
+        header {
+            height: auto;
+            padding: 12px 16px;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 52px;
+        }
+
+        .header-right {
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cart {
+            margin-left: 0;
+        }
+
+        body {
+            padding-top: 150px;
+        }
+
+        .container {
+            margin-top: 24px;
+        }
+    }
+
+    a {
+        color: #d4a64a;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    h1 {
+        color: #f2c66d;
+        font-size: 36px;
+        margin-bottom: 5px;
+    }
+
+    .update {
+        color: #aaa;
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        color: #f2c66d;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    p, li {
+        line-height: 1.6;
+        font-size: 15px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .contact-box {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+
+    .highlight {
+        color: #f2c66d;
+        font-weight: bold;
+    }
+
+    /* BOTTOM */
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+        flex-wrap: wrap;
+    }
+
+    .footer-left .logo {
+        font-size: 24px;
+        color: #f5c26b;
+        margin-bottom: 20px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .footer-left p {
+        max-width: 400px;
+        line-height: 1.6;
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+        color: #f5c26b;
+        margin-bottom: 20px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .footer-links a {
+        display: block;
+        margin-bottom: 10px;
+        color: #cfcfcf;
+        text-decoration: none;
+    }
+
+    .socials {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social {
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 50px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    margin-left: 20px;
+    color: #cfcfcf;
+    text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+    color: #ffd700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 44px;
+        padding: 3px 6px;
+        gap: 6px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        background: #031235;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .header-right {
+        gap: 3px;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        margin: 0 1px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .header-right > a,
+    .dropdown > a {
+        display: block;
+        max-width: 32px;
+        font-size: 8px;
+        line-height: 1.1;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .cart {
+        margin-left: 0;
+        margin-right: 0;
+        gap: 3px;
+        font-size: 10.5px;
+        min-width: 86px;
+        justify-content: flex-end;
+    }
+
+    .cart svg {
+        width: 11px;
+        height: 11px;
+        margin-top: 0;
+    }
+
+    .cart span {
+        display: block;
+        width: 68px;
+        line-height: 1;
+        white-space: normal;
+        text-align: left;
+    }
+
+    body {
+        padding-top: 44px;
+    }
+
+    .footer {
+        padding-top: 64px;
+        padding-bottom: 32px;
+    }
+
+    .footer-bottom-links a {
+        margin: 0 10px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1120px) {
+    .logo img {
+        height: 72px;
+    }
+
+    .header-right {
+        gap: 16px;
+    }
+
+    .header-right a,
+    .cart {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-right {
+        gap: 4px;
+    }
+
+    .header-right > a,
+    .dropdown > a {
+        max-width: 32px;
+        font-size: 7.5px;
+    }
+
+    .logo img {
+        height: 28px;
+    }
+
+    .cart {
+        min-width: 78px;
+        font-size: 9px;
+    }
+
+    .cart span {
+        width: 62px;
+    }
+
+    .cart svg {
+        width: 10px;
+        height: 10px;
+    }
+}
+/* FOOTER */
+.footer {
+    background: linear-gradient(90deg, #0c1b35, #050d1f);
+    color: #cfcfcf;
+    padding: 80px 10% 40px;
+}
+
+.legal-footer {
+    margin-top: 20px;
+    padding: 12px 10px 14px;
+    text-align: center;
+    color: #cfcfcf;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+</style>
+
+</head>
+
+<body>
+<header id="header">
+    <div class="logo">
+        <img src="images/logo.png" alt="NOCTUA">
+    </div>
+
+    <div class="header-right">
+        <a href="#">Le Rituel cocon</a>
+
+        <div class="dropdown">
+            <a href="#">Produits ▼</a>
+            <div class="dropdown-content">
+                <a href="#">Rituel sommeil</a>
+                <a href="#">Rituel bien-être</a>
+                <a href="#">Rituel cocooning</a>
+            </div>
+        </div>
+
+        <a href="about.html">Notre Histoire</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <a class="cart" href="cart.html">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         width="20" height="20" 
+         fill="none" 
+         stroke="currentColor" 
+         stroke-width="2" 
+         stroke-linecap="round" 
+         stroke-linejoin="round" 
+         viewBox="0 0 24 24">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.5L23 6H6"></path>
+    </svg>
+
+    <span>Mon Panier</span>
+</a>
+</header>
+<div class="container">
+
+    <a href="index.html">← Retour à l'accueil</a>
+
+    <h1>Politique de Confidentialité</h1>
+    <div class="update">Dernière mise à jour : 2 Avril 2026</div>
+
+    <h2>1. Introduction</h2>
+    <p>
+        Chez Nutri Sereins, nous accordons une importance primordiale à la protection de votre vie privée et de vos données personnelles.
+        Cette politique de confidentialité explique comment nous collectons, utilisons, partageons et protégeons vos informations lorsque vous utilisez notre site web ou nos services.
+    </p>
+
+    <h2>2. Types de Données Collectées</h2>
+    <p>Nous pouvons collecter les types d’informations suivants :</p>
+    <ul>
+        <li><span class="highlight">Informations personnelles</span> : nom, prénom, adresse e-mail, adresse postale et numéro de téléphone.</li>
+        <li><span class="highlight">Données de paiement</span> : informations nécessaires au traitement des transactions.</li>
+        <li><span class="highlight">Données d’utilisation</span> : pages visitées, temps passé et interactions avec le site.</li>
+        <li><span class="highlight">Cookies</span> : identifiants permettant d’améliorer votre expérience.</li>
+    </ul>
+
+    <h2>3. Utilisation des Données</h2>
+    <ul>
+        <li>Traiter et livrer vos commandes.</li>
+        <li>Améliorer notre site et nos services.</li>
+        <li>Envoyer des communications marketing (avec votre consentement).</li>
+        <li>Assurer la sécurité et prévenir les fraudes.</li>
+    </ul>
+
+    <h2>4. Protection et Sécurité des Données</h2>
+    <p>
+        Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles pour protéger vos données contre l'accès non autorisé,
+        la modification ou la divulgation. Toutes les transactions sont sécurisées via SSL.
+    </p>
+
+    <h2>5. Vos Droits</h2>
+    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+    <ul>
+        <li>Droit d’accès à vos données.</li>
+        <li>Droit de rectification.</li>
+        <li>Droit à l’effacement.</li>
+        <li>Droit d’opposition et de limitation.</li>
+        <li>Droit à la portabilité.</li>
+    </ul>
+
+    <h2>6. Nous Contacter</h2>
+    <p>Pour toute question :</p>
+
+    <div class="contact-box">
+        <strong>Nutri Sereins - Service Confidentialité</strong><br>
+        Email : privacy@nutrisereins.fr
+    </div>
+
+</div>
+
+<footer class="legal-footer">© 2026 NOCTUA. Tous droits réservés.</footer>
+</body>
+</html>

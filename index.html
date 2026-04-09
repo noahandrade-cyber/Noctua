@@ -1,0 +1,2669 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>NOCTUA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at top, #132a52, #050d1f 80%);
+    color: #f5f5f5;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* PARTICULES */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.2;
+    animation: moveStars 60s linear infinite;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 140px;
+    padding: 0 40px;
+    height: 100px;
+    background: #050d1f;
+    transition: top 0.4s;
+}
+
+.logo img {
+    height: 85px;
+}
+
+/* NAV */
+.header-right {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: 300;
+    position: relative;
+    transition: 0.3s;
+}
+
+.header-right a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, #ffd700, #b8860b);
+    transition: 0.4s;
+}
+
+.header-right a:hover {
+    color: #ffd700;
+}
+
+.header-right a:hover::after {
+    width: 100%;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #050d1f;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    flex-direction: column;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255,215,0,0.1);
+    color: #ffd700;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+/* PANIER */
+.cart {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #eee;
+    transition: 0.3s;
+}
+
+.cart:hover {
+    color: #ffd700;
+}
+.cart svg {
+    transition: 0.3s;
+}
+
+.cart:hover svg {
+    transform: scale(1.15);
+}
+
+/* HERO */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    margin-top: 100px; /* 👈 garde ça pour compenser le header FIXE */
+   overflow: hidden;
+}
+.hero-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #050d1f;
+    padding: 40px 0;
+}
+
+
+.hero-image img {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 0;
+    height: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+/* IMAGE */
+.hero-bg {
+    width: 100%;
+    height: auto; /* 🔥 clé pour voir toute l’image */
+    display: block;
+}
+/* OVERLAY BLEU NUIT */
+
+.hero {
+    background: radial-gradient(circle at top, #1a1a2e, #0b0b16);
+    color: #fff;
+    padding: 20px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.tag {
+    display: inline-block;
+    color: #f5c26b;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 64px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #f5c26b;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 30px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #d1d1d1;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    background: #f5c26b;
+    color: #000;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #e0aa4f;
+}
+
+/* MARQUEE */
+:root {
+    --marquee-height: 52px;
+}
+
+.marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #0c1b35, #132a52);
+    border-top: 1px solid rgba(255,215,0,0.3);
+    border-bottom: 1px solid rgba(255,215,0,0.3);
+    padding: 14px 0;
+}
+
+.marquee-content {
+    white-space: nowrap;
+    animation: scrollText 18s linear infinite;
+    font-family: 'Playfair Display';
+    color: #ffd700;
+    font-size: 20px;
+}
+
+@keyframes scrollText {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+.hero-cta {
+    position: absolute;
+    bottom: 100px; /* 👈 plus haut */
+    right: 55px;   /* 👈 un peu plus à droite */
+    z-index: 3;
+}
+
+.cta-button {
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    padding: 16px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: #173f7a;
+    background: linear-gradient(45deg, #a5b91d, #876b1e);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Hover effet luxe */
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+
+/* Effet glow subtil */
+.cta-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #ffd700, #fff);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+.cta-button:hover::after {
+    opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+    .hero-cta {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 40px;
+    }
+}
+
+/* BELOW BANNER */
+.below-banner {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    position: relative;
+}
+
+.below-banner img {
+    width: 100%;
+    height: auto; /* 🔥 garde les proportions */
+    display: block;
+}
+
+.full-width-img {
+    width: 100%;
+    display: block;
+    height: 450px; /* 👈 augmente ici */
+    
+}
+
+/* SECTION 1 STYLE PREMIUM */
+.section-1 {
+    padding: 120px 10%;
+    background: transparent;
+}
+
+.section-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+/* TEXTE */
+.section-text {
+    flex: 1;
+}
+
+.section-tag {
+    color: #f5c26b;
+    font-size: 40px; /* 🔥 augmente ici (ex: 22px ou 24px) */
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 500; /* optionnel pour plus de présence */
+}
+
+.section-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.section-text p {
+    font-size: 18px;
+    color: #cfcfcf;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+/* BOUTON */
+.btn-outline {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 1px solid #f5c26b;
+    border-radius: 10px;
+    color: #f5c26b;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #f5c26b;
+    color: #050d1f;
+}
+
+/* IMAGE */
+.section-image {
+    flex: 1;
+}
+
+.section-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .section-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-text p {
+        margin: auto;
+    }
+}
+
+/* SECTION 2 */
+.section-2 {
+    padding: 120px 10%;
+    background: transparent;
+}
+
+/* INVERSE LAYOUT */
+.section-container.reverse {
+    flex-direction: row;
+}
+
+/* OPTION : effet carte luxe pour le texte */
+.section-2 .section-text {
+    background: rgba(255,255,255,0.03);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* IMAGE + effet doux */
+.section-2 .section-image img {
+    border-radius: 25px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+    transition: 0.4s;
+}
+
+.section-2 .section-image img:hover {
+    transform: scale(1.03);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .section-container.reverse {
+        flex-direction: column;
+    }
+
+    .section-2 .section-text {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+/* SECTION 3 - FULL IMAGE STYLE */
+.section-3 {
+    padding: 120px 0;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.section3-container {
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* TEXTE À GAUCHE */
+.section3-text {
+    width: 40%;
+    padding-left: 10%;
+    z-index: 2;
+}
+
+.section3-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.section3-text p {
+    color: #cfcfcf;
+    margin-bottom: 25px;
+    max-width: 400px;
+}
+
+/* IMAGE À DROITE (PLEINE HAUTEUR) */
+.section3-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+}
+
+.section3-image img {
+    width: 78%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: 3%;
+}
+
+/* DÉGRADÉ FONDU (ultra important pour le rendu luxe) */
+.section-3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .section3-container {
+        flex-direction: column;
+    }
+
+    .section3-text {
+        width: 100%;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .section3-image {
+        position: relative;
+        width: 100%;
+        height: 300px;
+    }
+
+    .section-3::after {
+        display: none;
+    }
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #f5e6c8;
+    font-family: 'Playfair Display';
+    width: 80%;
+    font-size: 28px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.overlay-text span {
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+}
+
+
+
+/* FORM */
+.container {
+    padding: 120px 10%;
+}
+
+.testimonials,
+.testimonials-section {
+    padding: 48px 10% 0;
+}
+
+.testimonials-head,
+.testimonials-heading {
+    max-width: 980px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.testimonials-head .section-tag {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.testimonials-head h2,
+.testimonials-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: #f5d7a1;
+    margin-bottom: 10px;
+}
+
+.testimonials-head p,
+.testimonials-heading p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.testimonials-grid,
+.testimonials-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(380px, 46vw, 560px);
+    gap: 18px;
+    overflow-x: auto;
+    padding: 16px 4px 22px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 10%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.testimonials-grid::-webkit-scrollbar,
+.testimonials-track::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card {
+    scroll-snap-align: start;
+    background: linear-gradient(180deg, #182740 0%, #13223a 100%);
+    border: 1px solid rgba(129, 160, 220, 0.25);
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 0 18px 45px rgba(3, 10, 26, 0.4);
+    min-height: 292px;
+}
+
+.testimonial-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.testimonial-user {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    min-width: 0;
+}
+
+.testimonial-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #c5a429;
+    flex-shrink: 0;
+    background: #223857;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.testimonial-user strong {
+    display: block;
+    color: #f2f6ff;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.verified-line {
+    color: #d4ebe1;
+    font-size: 1.02rem;
+}
+
+.trustpilot-badge {
+    background: #1fb27e;
+    color: #f1fff9;
+    border-radius: 12px;
+    padding: 6px 10px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.testimonial-stars {
+    color: #ffd36b;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.testimonial-stars span {
+    color: #c2cadf;
+    letter-spacing: 0;
+    margin-left: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.testimonial-card p {
+    color: #eef2fb;
+    line-height: 1.45;
+    font-size: clamp(1rem, 1.45vw, 1.2rem);
+    margin-bottom: 14px;
+}
+
+.testimonial-date {
+    color: #aeb8ce;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.testimonials-hint {
+    margin-top: 10px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .testimonials,
+    .testimonials-section {
+        padding: 26px 16px 0;
+    }
+
+    .testimonials-grid,
+    .testimonials-track {
+        grid-auto-columns: minmax(92vw, 1fr);
+        scroll-padding-left: 16px;
+    }
+
+    .testimonial-card {
+        min-height: 268px;
+        padding: 16px;
+    }
+
+    .testimonial-top {
+        flex-direction: column;
+    }
+
+    .testimonial-user strong {
+        font-size: 1.2rem;
+    }
+
+    .verified-line,
+    .trustpilot-badge,
+    .testimonial-stars,
+    .testimonial-stars span,
+    .testimonial-date {
+        font-size: 0.95rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.98rem;
+    }
+}
+
+.product {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    padding: 60px;
+    border-radius: 25px;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+button {
+    background: linear-gradient(45deg, #ffd700, #b8860b);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+.footer {
+    background: linear-gradient(90deg, #0c1b35, #050d1f);
+    color: #cfcfcf;
+    padding: 56px 10% 24px;
+}
+
+/* GRID */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* LOGO */
+.footer-left .logo {
+    font-size: 20px;
+    color: #f5c26b;
+    margin-bottom: 14px;
+    font-family: 'Playfair Display', serif;
+}
+
+.footer-left p {
+    max-width: 400px;
+    line-height: 1.45;
+    font-size: 0.95rem;
+}
+
+/* LINKS */
+.footer-links h4,
+.footer-contact h4 {
+    color: #f5c26b;
+    margin-bottom: 14px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 8px;
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: #ffd700;
+}
+
+/* CONTACT */
+.footer-contact p {
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+}
+
+/* SOCIAL */
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social {
+    width: 34px;
+    height: 34px;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.social:hover {
+    background: rgba(255,215,0,0.2);
+}
+
+/* BOTTOM */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 32px;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 0.92rem;
+}
+
+.footer-bottom-links a {
+    margin-left: 14px;
+    color: #cfcfcf;
+    text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+    color: #ffd700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+
+/* Base animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+
+/* Visible */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variantes */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: all 0.8s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 0.8s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+/* HERO IMAGE SCROLL FIX */
+.hero-image-scroll {
+    position: relative;
+    width: 100%;
+    height: auto; /* image complète */
+    overflow: hidden;
+    display: grid;
+    grid-template-areas: "stack";
+    justify-items: stretch;
+    align-items: start;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+/* IMAGE FULL VISIBLE */
+.hero-image-scroll img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* jamais coupée */
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0; /* 🔥 enlève les micro-espaces */
+}
+
+.hero-image-scroll > img,
+.hero-image-scroll > .image-overlay,
+.hero-image-scroll > .overlay-content,
+.hero-image-scroll > .rituel-overlay {
+    grid-area: stack;
+}
+
+/* OVERLAY GLOBAL */
+.image-overlay,
+.overlay-content {
+    position: relative;
+    max-width: min(92vw, 650px);
+    width: 100%;
+    z-index: 2;
+}
+
+
+/* ===== HERO IMAGE ===== */
+
+.hero-image-scroll {
+    position: relative;
+}
+
+.hero-image-scroll img {
+    width: 100%;
+    display: block;
+}
+
+/* ===== OVERLAY POSITION ===== */
+
+.image-overlay {
+    align-self: start;
+    justify-self: start;
+    width: min(100%, 34rem);
+    margin: clamp(1.25rem, 4vw, 4rem) 0 0 clamp(1rem, 6vw, 6rem);
+    padding: clamp(1rem, 2.5vw, 2rem);
+    line-height: 1.4;
+
+    color: #f3c26a;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.8);
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) {
+    display: grid;
+    grid-template-areas: "stack";
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: clamp(1.25rem, 4vw, 3rem) clamp(1.25rem, 6vw, 5rem);
+    text-align: left;
+}
+
+/* ===== TITRE ===== */
+.image-overlay h2 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.12;
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+    max-width: 12ch;
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay h2 {
+    font-size: clamp(2rem, 4.8vw, 3.5rem);
+    line-height: 1.1;
+    max-width: none;
+    margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+    white-space: nowrap;
+}
+
+/* ===== SOUS TITRE ===== */
+.image-overlay h3 {
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-style: italic;
+    margin-bottom: clamp(1rem, 2.5vw, 2rem);
+    opacity: 0.95;
+    max-width: 26ch;
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay h3 {
+    font-size: clamp(1.2rem, 2.6vw, 1.75rem);
+    max-width: none;
+    white-space: nowrap;
+}
+
+/* ===== LISTE ===== */
+
+.problems {
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay .problems {
+    max-width: none;
+    margin-top: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.problems li {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay .problems li {
+    font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+    white-space: nowrap;
+}
+
+/* ===== ICÔNES (FIX CORRECT) ===== */
+
+.problems li::before {
+    content: "☹";
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.8;
+
+    flex-shrink: 0; /* 🔥 empêche le chevauchement */
+}
+
+/* ===== TEXTE FINAL ===== */
+
+.highlight {
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: clamp(1rem, 3vw, 2rem);
+    max-width: 28ch;
+}
+
+.hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay .highlight {
+    max-width: 24ch;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+
+
+/* ===== SECTION IMAGE-2 (VERSION EXACTE DESIGN IMAGE) ===== */
+
+.hero-image-scroll.image-2 {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+/* IMAGE */
+.hero-image-scroll.image-2 img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* CONTENU GLOBAL */
+.hero-image-scroll.image-2 .overlay-content {
+    align-self: start;
+    justify-self: stretch;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 8vw, 6rem);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    color: #f5d7a1;
+    font-family: 'Playfair Display';
+}
+
+/* ===== TITRE CENTRÉ ===== */
+.overlay-content h1 {
+    text-align: center;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.15;
+    margin-bottom: 25px;
+    max-width: 14ch;
+}
+
+
+.overlay-content h1 span {
+    color: #ffd36b;
+    font-style: italic;
+}
+
+/* LIGNE */
+.separator {
+    margin: 20px auto 40px;
+}
+
+/* ===== LISTE À GAUCHE ===== */
+.benefits {
+    list-style: none;
+    padding: 0;
+    margin-top: clamp(1rem, 3vw, 2rem);
+    max-width: min(100%, 34rem);
+}
+
+/* ITEM */
+/* ===== LISTE LUXE ===== */
+
+.benefits {
+    list-style: none;
+    padding: 0;
+    margin-top: clamp(1rem, 3vw, 2rem);
+    max-width: min(100%, 34rem);
+}
+
+/* ITEM */
+.benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(0.75rem, 2vw, 1.125rem);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+/* CERCLE */
+.icon {
+    width: clamp(2.5rem, 5vw, 3.625rem);
+    height: clamp(2.5rem, 5vw, 3.625rem);
+    border: 2px solid #ffd36b;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+/* SVG */
+.icon svg {
+    width: clamp(1rem, 2.2vw, 1.625rem);
+    height: clamp(1rem, 2.2vw, 1.625rem);
+    stroke: #ffd36b;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* TEXTE */
+.text strong {
+    display: block;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    color: #f5d7a1;
+    line-height: 1.2;
+}
+
+.text span {
+    display: block;
+    font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+    color: #ddd;
+    margin-top: 6px;
+}
+
+/* ===== TEXTE BAS CENTRÉ ===== */
+.bottom-text br {
+    display: none; /* ❌ enlève les retours forcés */
+}
+.bottom-text {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: clamp(3.5rem, 10vw, 6.5rem);
+
+    width: 100%;
+    max-width: 44rem;
+
+    text-align: center;
+
+    font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+    line-height: 1.5; /* 🔥 évite le chevauchement */
+
+    color: #f5d7a1;
+}
+
+/* ===== OVERLAY ===== */
+
+/* ===== IMAGE 4 ===== */
+/* ===== VERSION LUXE CINÉMATIQUE ===== */
+
+.hero-image-scroll.image-4 {
+    position: relative;
+    display: grid;
+    grid-template-areas: "stack";
+}
+
+/* IMAGE */
+.hero-image-scroll.image-4 img {
+    grid-area: stack;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== OVERLAY LIBRE (COMME TON VISUEL) ===== */
+.rituel-overlay {
+    position: absolute;
+    inset: 0;
+    font-family: 'Playfair Display';
+    color: #f5d7a1;
+}
+
+/* ===== TITRE ===== */
+.rituel-title {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    color: #ffd36b;
+}
+
+/* ===== STEP 1 (HAUT DROITE) ===== */
+.step-1 {
+    position: absolute;
+    top: 14%;
+    right: 14%;
+    text-align: left;
+    max-width: 260px;
+}
+
+/* ===== STEP 2 (BAS GAUCHE) ===== */
+.step-2 {
+    position: absolute;
+    bottom: 45%;
+    left: 14%;
+    text-align: left;
+    max-width: 260px;
+}
+
+/* ===== STEP 3 (BAS DROITE) ===== */
+.step-3 {
+    position: absolute;
+    bottom: 23%;
+    right: 14%;
+    text-align: left;
+    max-width: 260px;
+}
+
+/* ===== TITRES ===== */
+.step h3 {
+    font-size: clamp(2rem, 2.8vw, 2.8rem);
+    color: #ffd36b;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ===== TEXTE ===== */
+.step p {
+    font-size: clamp(1.4rem, 1.9vw, 1.8rem);
+    line-height: 1.4;
+}
+
+/* ===== STYLE LUXE ===== */
+.step p strong {
+    display: block;
+    margin-bottom: clamp(0.5rem, 1vw, 0.8rem);
+}
+
+
+.step p span {
+    display: block;
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+/* ===== TEXTE BAS ===== */
+.rituel-bottom {
+    position: absolute;
+    bottom: 4%;
+    left: 30%;
+    transform: translateX(-50%);
+    text-align: center;
+
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 600;
+    max-width: 600px;
+    line-height: 1.6;
+    white-space: normal;
+    color: #f5d7a1;
+}
+
+/* ===== SHADOW ===== */
+.rituel-overlay * {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+    .image-overlay,
+    .overlay-content,
+    .rituel-overlay {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .rituel-overlay {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .rituel-title {
+        margin-bottom: 30px;
+    }
+
+    .step {
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .step-1,
+    .step-2,
+    .step-3,
+    .rituel-bottom,
+    .rituel-title {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
+    .rituel-bottom {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem 1rem;
+        max-width: 90%;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+}
+.sections-bg {
+    background: url("images/fond_finis.png") center/cover no-repeat;
+    position: relative;
+}
+
+/* option luxe (recommandé pour lisibilité) */
+.sections-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 13, 31, 0.75); /* assombrit */
+    z-index: 0;
+}
+
+/* 🔥 Agrandissement des textes demandés */
+.image-overlay h2,
+.overlay-content h1 {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.12;
+    max-width: 12ch;
+}
+
+.image-overlay h3,
+.overlay-content .bottom-text,
+.image-overlay .highlight {
+    font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+    line-height: 1.35;
+}
+
+.image-overlay .highlight {
+    width: max-content;
+    max-width: none;
+    white-space: nowrap;
+    margin-top: clamp(5.5rem, 12vw, 9rem);
+}
+
+.image-3 .image-overlay h2 {
+    font-size: clamp(2.2rem, 4.8vw, 3.7rem);
+    line-height: 1.08;
+    max-width: 12ch;
+    margin-top: 0;
+}
+
+.image-3 .image-overlay h3 span {
+    display: block;
+}
+
+.hero-image-scroll.image-3 .image-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem);
+    overflow: hidden;
+    text-align: left;
+}
+
+.hero-image-scroll.image-3 .image-overlay h2,
+.hero-image-scroll.image-3 .image-overlay h3,
+.hero-image-scroll.image-3 .image-overlay .problems {
+    max-width: min(92%, 38rem);
+}
+
+.hero-image-scroll.image-3 .image-overlay .problems li {
+    white-space: normal;
+}
+
+.hero-image-scroll.image-3 {
+    margin-bottom: 0;
+}
+
+.hero-image-scroll.image-4 {
+    margin-top: 0;
+}
+
+.hero-banner + .hero-image-scroll {
+    margin-top: 0;
+}
+
+.hero-image-scroll + .hero-image-scroll,
+.hero-image-scroll + .hero {
+    margin-top: var(--marquee-height);
+}
+
+.image-3 .image-overlay .problems {
+    margin-top: clamp(2.8rem, 6.2vw, 4.4rem);
+}
+
+.image-3 .image-overlay .problems li {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.45;
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.image-2 .overlay-content h1 {
+    font-size: clamp(1.8rem, 4vw, 4rem);
+    line-height: 1.08;
+    margin-top: clamp(0.2rem, 0.8vw, 0.9rem);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.image-2 .overlay-content .benefits {
+    margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.image-2 .overlay-content .benefits .text {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.35;
+}
+
+.image-2 .overlay-content .benefits .text strong {
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    line-height: 1.25;
+}
+
+.image-2 .overlay-content .benefits .text span {
+    font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+    line-height: 1.35;
+}
+
+.image-2 .overlay-content .benefits li:nth-child(2) .text span {
+    white-space: normal;
+}
+
+.image-2 .overlay-content .benefits li {
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.image-overlay .problems li,
+.overlay-content .benefits .text {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.image-overlay .problems li {
+    margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.image-overlay .highlight,
+.overlay-content .bottom-text {
+    font-weight: 600;
+}
+
+.image-overlay .highlight {
+    margin-top: clamp(1rem, 3vw, 2rem);
+    display: block;
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 44px;
+        padding: 3px 4px;
+        gap: 4px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        background: #031235;
+        overflow-x: auto;
+    }
+
+    .logo img {
+        height: 24px;
+    }
+
+    .header-right {
+        gap: 2px;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        margin: 0 1px;
+        flex: 1;
+        min-width: 0;
+        white-space: nowrap;
+    }
+
+    .header-right > a,
+    .dropdown > a {
+        display: block;
+        max-width: none;
+        font-size: 7px;
+        line-height: 1.1;
+        text-align: center;
+        font-weight: 500;
+        white-space: nowrap;
+        word-break: keep-all;
+    }
+
+    .header-right > a:first-of-type {
+        min-width: max-content;
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 6.2px;
+        letter-spacing: -0.1px;
+    }
+
+    .cart {
+        margin-left: 0;
+        margin-right: 0;
+        gap: 2px;
+        font-size: 7px;
+        min-width: auto;
+        justify-content: flex-end;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .cart svg {
+        width: 9px;
+        height: 9px;
+        margin-top: 0;
+    }
+
+    .cart span {
+        display: block;
+        width: auto;
+        line-height: 1;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    .hero-banner {
+        margin-top: 44px;
+    }
+
+    .hero-image-scroll {
+        display: block;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) {
+        display: grid;
+    }
+
+    .image-overlay,
+    .overlay-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        padding: 22px 18px 8px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .image-overlay {
+        width: 100%;
+        padding: 22px 18px 0;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        padding: 18px 18px 20px;
+        text-align: left;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0;
+    }
+
+    .image-overlay h2,
+    .overlay-content h1,
+    .image-3 .image-overlay h2,
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay h2 {
+        position: static;
+        top: auto;
+        white-space: normal;
+        font-size: clamp(28px, 8vw, 38px);
+        line-height: 1.15;
+        margin-bottom: 14px;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay h2 {
+        font-size: clamp(1.6rem, 5.4vw, 2.8rem);
+        white-space: nowrap;
+        margin-bottom: 10px;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay h3 {
+        font-size: clamp(1.1rem, 4.8vw, 1.5rem);
+        white-space: nowrap;
+        margin-bottom: 14px;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay .problems {
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay .problems li {
+        font-size: clamp(1.02rem, 4.4vw, 1.35rem);
+        white-space: nowrap;
+        margin-bottom: 12px;
+    }
+
+    .hero-image-scroll:not(.image-2):not(.image-3):not(.image-4) .image-overlay .highlight {
+        font-size: clamp(1.05rem, 4.4vw, 1.45rem);
+        width: max-content;
+        max-width: none;
+        white-space: nowrap;
+        margin-top: clamp(3rem, 8vw, 5rem);
+    }
+
+    .image-3 .image-overlay h2 {
+        margin-top: 0;
+    }
+
+    .image-3 .image-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 16px 16px 12px;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .image-3 .image-overlay h3 {
+        order: 0;
+        margin-bottom: 10px;
+    }
+
+    .image-3 .image-overlay .problems {
+        order: 0;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+
+    .image-3 .image-overlay h2 {
+        order: 0;
+        margin-top: 0;
+        margin-bottom: 8px;
+    }
+
+    .image-3 .image-overlay h2,
+    .image-3 .image-overlay h3,
+    .image-3 .image-overlay .problems {
+        max-width: min(96%, 28rem);
+    }
+
+    .image-3 .image-overlay .problems li {
+        white-space: normal;
+        margin-bottom: 8px;
+    }
+
+    .image-overlay h3,
+    .overlay-content .bottom-text,
+    .image-overlay .highlight {
+        font-size: clamp(18px, 5vw, 22px);
+        line-height: 1.35;
+        margin-top: clamp(6rem, 12vw, 10rem); /* 🔥 augmente ici */
+    }
+
+    .image-2 .overlay-content h1 {
+        margin-top: clamp(0.1rem, 0.8vw, 0.6rem);
+        white-space: nowrap;
+        font-size: clamp(18px, 4vw, 30px);
+        margin-left: auto;
+        margin-right: auto;
+        max-width: none;
+        width: max-content;
+    }
+
+    .image-2 .overlay-content {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .image-2 {
+    position: relative;
+} 
+.image-2 .bottom-text {
+    position: absolute;
+    bottom: 6px; /* texte encore plus bas dans l'image */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+    .image-2 .overlay-content .benefits {
+        margin-top: 26px;
+        max-width: none;
+    }
+
+    .image-2 .overlay-content .benefits li {
+        margin-bottom: 22px;
+    }
+
+    .image-2 .overlay-content .benefits .text strong {
+        font-size: clamp(20px, 5.2vw, 24px);
+    }
+
+    .image-2 .overlay-content .benefits .text span {
+        font-size: clamp(16px, 4.2vw, 18px);
+    }
+
+    .image-2 .overlay-content .benefits li:nth-child(2) .text span {
+        white-space: normal;
+    }
+
+    .image-2 .overlay-content .benefits .text,
+    .image-overlay .problems li {
+        font-size: clamp(18px, 4.5vw, 22px);
+    }
+
+    .image-2 .overlay-content .bottom-text {
+        margin-top: auto;
+        padding-top: 2rem;
+    }
+
+    .image-3 .image-overlay .problems {
+        margin-top: 56px;
+    }
+
+    .image-3 .image-overlay .problems li {
+        font-size: clamp(18px, 4.5vw, 22px);
+    }
+
+    .hero,
+    .section-1,
+    .section-2,
+    .section-3,
+    .container,
+    .footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .section-1,
+    .section-2,
+    .section-3 {
+        padding-top: 72px;
+        padding-bottom: 72px;
+    }
+
+    .section-container,
+    .section-container.reverse,
+    .section3-container,
+    .footer-container,
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .section-text,
+    .section3-text,
+    .footer-left p {
+        max-width: 100%;
+    }
+
+    .section-tag {
+        font-size: clamp(18px, 4.8vw, 24px);
+        letter-spacing: 1px;
+        margin-bottom: 14px;
+    }
+
+    .section-text h2,
+    .section3-text h2,
+    .hero h1 {
+        font-size: clamp(30px, 8vw, 42px);
+        line-height: 1.12;
+    }
+
+    .section-text p,
+    .section3-text p,
+    .hero p,
+    .footer-left p {
+        font-size: clamp(16px, 4vw, 18px);
+    }
+
+    .section-2 .section-text {
+        margin-top: 18px;
+        padding: 24px;
+    }
+
+    .section-image img,
+    .section3-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .section-image img[src="images/photo1.png"],
+    .section-image img[src="images/photo2.png"] {
+        width: min(185vw, 1180px);
+        max-width: none;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section3-image img[src="images/photo3.png"] {
+        width: min(128vw, 760px);
+        max-width: none;
+        margin-left: 53%;
+        transform: translateX(-50%);
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .section3-image {
+        height: auto;
+    }
+
+    .hero-image-scroll.image-4 .rituel-overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        gap: clamp(1.2rem, 4vw, 1.8rem);
+        padding: clamp(1.2rem, 4vw, 2.2rem) clamp(1rem, 5vw, 1.8rem);
+        text-align: center;
+    }
+
+    .hero-image-scroll.image-4 .rituel-title {
+        grid-column: 1 / -1;
+        justify-self: center;
+        align-self: auto;
+        position: relative;
+        width: 100%;
+        font-size: clamp(2rem, 7vw, 2.8rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        text-align: center;
+    }
+
+    .hero-image-scroll.image-4 .step {
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .hero-image-scroll.image-4 .step h3 {
+        font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+        margin-bottom: clamp(0.8rem, 2.5vw, 1.2rem);
+    }
+
+    .hero-image-scroll.image-4 .step p {
+        font-size: clamp(1.2rem, 4.2vw, 1.6rem);
+        line-height: 1.35;
+    }
+
+    .hero-image-scroll.image-4 .step-1 {
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin-top: 0;
+        max-width: 100%;
+    }
+
+    .hero-image-scroll.image-4 .step-2 {
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin-top: 0;
+        max-width: 100%;
+    }
+
+    .hero-image-scroll.image-4 .step-3 {
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin-top: 0;
+        max-width: 100%;
+    }
+
+    .hero-image-scroll.image-4 .rituel-bottom {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-self: center;
+        align-self: end;
+        max-width: 100%;
+        margin-top: auto;
+        padding-bottom: clamp(1rem, 4vw, 1.8rem);
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.4rem, 4.2vw, 1.85rem);
+        font-weight: 600;
+        line-height: 1.4;
+        color: #f5d7a1;
+    }
+
+    .footer {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
+
+    .footer-bottom-links a {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-right {
+        gap: 2px;
+    }
+
+    .header-right > a,
+    .dropdown > a {
+        max-width: none;
+        font-size: 6.5px;
+        white-space: nowrap;
+        word-break: keep-all;
+    }
+
+    .header-right > a:first-of-type {
+        min-width: max-content;
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 5.8px;
+        letter-spacing: -0.1px;
+    }
+
+    .logo img {
+        height: 22px;
+    }
+
+    .cart {
+        min-width: auto;
+        font-size: 6.5px;
+    }
+
+    .cart svg {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* remet le contenu au-dessus */
+.sections-bg section {
+    position: relative;
+    z-index: 1;
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="logo">
+        <img src="images/logo.png">
+    </div>
+
+    <div class="header-right">
+        <a href="#">Le Rituel cocon</a>
+
+        <div class="dropdown">
+            <a href="#">Produits ▼</a>
+            <div class="dropdown-content">
+                <a href="#">Rituel sommeil</a>
+                <a href="#">Rituel bien-être</a>
+                <a href="#">Rituel cocooning</a>
+            </div>
+        </div>
+
+        <a href='about.html'>Notre Histoire</a>
+        <a href='contact.html'>Contact</a>
+    </div>
+
+    <a class='cart' href='cart.html'>
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         width="20" height="20" 
+         fill="none" 
+         stroke="currentColor" 
+         stroke-width="2" 
+         stroke-linecap="round" 
+         stroke-linejoin="round" 
+         viewBox="0 0 24 24">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.5L23 6H6"></path>
+    </svg>
+
+    <span>Mon Panier</span>
+</a>
+</header>
+
+<section class="hero-banner">
+    <img src="images/baniererrr.png" class="hero-bg">
+   
+    <div class="marquee">
+        <div class="marquee-content">
+            🌙 Offre de lancement • ✨ Livraison offerte et 20€ de réduction sur votre coffret premium  •  💛 Édition limitée  • 
+        </div>
+    </div>
+
+    <div class="hero-cta">
+        <a href="#" class="cta-button">Offrez-vous votre Rituel Cocon</a>
+    </div>
+</section>
+
+
+<section class="hero-image-scroll">
+
+    <img src="images/ppg.png" alt="Sommeil">
+   
+
+    <div class="image-overlay reveal">
+
+        <h2>Vous avez du mal à dormir ?</h2>
+
+        <h3>Vous vous reconnaissez ?</h3>
+
+        <ul class="problems">
+            <li>Esprit qui tourne en boucle au coucher</li>
+            <li>Difficulté à trouver le sommeil</li>
+            <li>Réveils nocturnes fréquents</li>
+            <li>Fatigue dès le réveil</li>
+        </ul>
+
+        <p class="highlight">
+            Le problème ne vient pas de vous, mais de votre routine du soir...
+        </p>
+
+    </div>
+
+</section>
+
+<section class="hero-image-scroll image-2">
+
+    <img src="images/2ZH.png" alt="Sommeil">
+
+    <div class="overlay-content reveal">
+
+    <h1>La solution naturelle pour <span>transformer</span> vos nuits.</h1>
+
+    <div class="separator"></div>
+    
+
+    <ul class="benefits">
+
+    <li>
+        <div class="icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3a9 9 0 1 0 9 9c0-.3 0-.6-.1-.9A7 7 0 0 1 12 3z"/>
+            </svg>
+        </div>
+        <div class="text">
+            <strong>Endormissement rapide,</strong>
+            <span>sans effort</span>
+        </div>
+    </li>
+
+    <li>
+        <div class="icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C8 6 4 8 4 12a8 8 0 0 0 16 0c0-4-4-6-8-10z"/>
+            </svg>
+        </div>
+        <div class="text">
+            <strong>Esprit apaisé</strong>
+            <span>dès les premières minutes</span>
+        </div>
+    </li>
+
+    <li>
+        <div class="icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
+            </svg>
+        </div>
+        <div class="text">
+            <strong>Sommeil profond</strong>
+            <span>et réellement réparateur</span>
+        </div>
+    </li>
+
+    <li>
+        <div class="icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"/>
+            </svg>
+        </div>
+        <div class="text">
+            <strong>Une routine du soir simple,</strong>
+            <span>naturelle et efficace</span>
+        </div>
+    </li>
+
+</ul>
+   
+</div>
+
+</section>
+
+<section class="hero-image-scroll image-3">
+
+    <img src="images/3GT.png" alt="Sommeil">
+   
+
+    <div class="image-overlay reveal">
+
+        <h2>Bien plus qu’un produit, un rituel complet</h2>
+
+        <h3><span>Préparez votre corps et votre esprit à</span><span>lâcher prise naturellement ?</span></h3>
+
+        <ul class="problems">
+            <li>Un moment pour vous et pour vous détendre</li>
+            <li>Un rituel pour ralentir et apaiser votre esprit</li>
+            <li>Une transition douce vers un sommeil profond et réparateur</li>
+            
+        </ul>
+
+    </div>
+
+</section>
+
+<section class="hero-image-scroll image-4">
+
+    <img src="images/rit.png" alt="Rituel en 3 étapes">
+
+    <div class="rituel-overlay reveal">
+        
+        <div class="rituel-title">Rituel en 3 étapes</div>
+        
+        <div class="step step-1">
+            <h3>1. Respirez</h3>
+            <p>
+                <strong>Vaporisez votre brume</strong>
+                <span>Et laissez le calme s'installer</span>
+            </p>
+        </div>
+        
+        <div class="step step-2">
+            <h3>2. Savourez</h3>
+            <p>
+                Dégustez votre infusion et relâcher<br>les tensions avec un<br>fond sonore apaisant
+            </p>
+        </div>
+        
+        <div class="step step-3">
+            <h3>3. Dormez</h3>
+            <p>
+                <strong>Masque + diffuseur d'ambiance<br>relaxante pour un lâcher prise total</strong>
+            </p>
+        </div>
+        
+        <div class="rituel-bottom">
+            En quelques minutes votre corps comprend qu'il est temps de dormir.
+        </div>
+        
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-content reveal"></div>
+        <span class="tag">✨ RITUEL Cocon - Rituel du soir</span>
+         
+        <h1>
+            Savourez des nuits profondes<br>
+            et des réveils lumineux
+        </h1>
+
+        <p>
+            Un rituel complet pensé pour apaiser votre esprit, relâcher les tensions 
+            et vous guider naturellement vers un sommeil profond.
+        </p>
+
+    </div>
+</div>
+</section>
+   
+
+
+
+
+
+
+
+
+<!-- SECTION 1 -->
+<!-- WRAPPER BACKGROUND -->
+<div class="sections-bg">
+
+<!-- SECTION 1 -->
+<section class="section-1">
+    <div class="section-container">
+
+        <!-- TEXTE -->
+        <div class="section-text reveal-left">
+            <span class="section-tag">🌙 Une expérience multisensorielle</span>
+
+            <h2>
+                Un geste simple pour transformer<br>
+                vos nuits
+            </h2>
+
+            <p>
+                Vaporisez sur votre oreiller et laissez installer une sensation de 
+                calme profond, inspirée des bienfaits de l'aromathérapie.
+            </p>
+
+            <a href="#" class="btn-outline">En savoir plus</a>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="section-image reveal-right">
+            <img src="images/photo1.png" alt="Spray d'oreiller">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SECTION 2 -->
+<section class="section-2">
+    <div class="section-container reverse">
+
+        <!-- IMAGE -->
+        <div class="section-image reveal-left">
+            <img src="images/photo2.png" alt="Infusion relaxante">
+        </div>
+
+        <!-- TEXTE -->
+        <div class="section-text reveal-right">
+            <span class="section-tag">☕ Une transition mentale</span>
+
+            <h2>
+                Plus qu'une infusion, un véritable<br>
+                havre de paix
+            </h2>
+
+            <p>
+                Savourez votre thé, scannez le QR code et laissez un univers sonore 
+                apaisant vous transporter… pour un moment de lâcher-prise complet.
+            </p>
+
+            <a href="#" class="btn-outline">Découvrir l'infusion</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section-3">
+    <div class="section3-container">
+
+        <!-- TEXTE -->
+        <div class="section3-text reveal">
+            <span class="section-tag">🌙 Un sommeil profond</span>
+
+            <h2>
+                Un rituel pensé pour vos nuits
+            </h2>
+
+            <p>
+                Masque de nuit et diffuseur d'ambiance apaisante guident vers un 
+                sommeil profond et réparateur.
+            </p>
+
+            <a href="#" class="btn-outline">Explorer le rituel</a>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="section3-image reveal-right">
+            <img src="images/photo3.png" alt="Masque de nuit">
+        </div>
+
+    </div>
+</section>
+</div>
+
+<section class="testimonials" aria-labelledby="testimonials-title">
+    <div class="testimonials-head">
+        <span class="section-tag">⭐ Avis clients vérifiés</span>
+        <h2 id="testimonials-title">Ce qu'en disent nos clients</h2>
+        <p>Des retours authentiques qui montrent l'expérience vécue avec le rituel sommeil NOCTUA.</p>
+    </div>
+
+    <div class="testimonials-grid">
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+    <img src="images/sara.png" alt="Sarah Labenne">
+</div>
+                    <div>
+                        <strong>Sarah Labenne</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>Je suis extrêmement satisfaite des produits ! Le travail réalisé est vraiment de grande qualité et très complet, je suis insomniaque et j'ai pourtant dormi comme un bébé. J'ai hâte du jour de lancement officiel, j'adore, j'adhère totalement !</p>
+            <span class="testimonial-date">Publié le 23 mars 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+    <img src="images/vanessa.png" alt="Vanessa Serrien">
+</div>
+                    <div>
+                        <strong>Vanessa Serrien</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>Le résultat a dépassé mes attentes ! Mon compagnon et moi-même utilisons le coffret très souvent, on évite de voir marionnette, trop fan. Je recommande à 100% !</p>
+            <span class="testimonial-date">Publié le 26 mars 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+    <img src="images/virg_ninie.png" alt="Virg Ninie Mimi">
+</div>
+                    <div>
+                        <strong>Virg Ninie Mimi</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>Ravie de la qualité des produits et du service ! Trop heureuse d'avoir été choisie pour essayer le concept avant tout le monde, je n'en ressors que du positif et surtout de très bonne nuit ! Vivement conseillé.</p>
+            <span class="testimonial-date">Publié le 26 mars 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+    <img src="images/nathalie.png" alt="Nathalie Minne">
+</div>
+                    <div>
+                        <strong>Nathalie Minne</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>On valide, concept complet, réaliste et efficace.</p>
+            <span class="testimonial-date">Publié le 27 mars 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+    <img src="images/arnaud.png" alt="Arnaud Zeylen">
+</div>
+                    <div>
+                        <strong>Arnaud Zeylen</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>L'équipe est très pro, réactive et à l'écoute. Très bonne expérience et projet au top, j'achète les yeux fermé. Je recommande vivement !</p>
+            <span class="testimonial-date">Publié le 30 mars 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">
+    <img src="images/gregori.png" alt="Grégory Gérard">
+</div>
+                    <div>
+                        <strong>Grégory Gérard</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>J'ai fait partie des sélectionnés pour essayer le coffret et mon envie de dormir m'a clairement surpris, je suis pourtant robuste. Excellent !</p>
+            <span class="testimonial-date">Publié le 30 mars 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                  <div class="testimonial-avatar">
+    <img src="images/audrey.png" alt="Audrey Sunshin">
+</div>
+                    <div>
+                        <strong>Audrey Sunshin</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>Noctua est devenu ma routine, mon rituel du soir et cela fait vraiment beaucoup de bien de se sentir apaisé après de grosse journée stressante au boulot. Super produit qualitatif et je recommande à 100%.</p>
+            <span class="testimonial-date">Publié le 01 avril 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                                    <div class="testimonial-avatar">
+    <img src="images/christine.png" alt="Christine Callier">
+</div>
+            
+                    <div>
+                        <strong>Christine Callier</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>J'ai fait toute ma carrière en tant qu'infirmière de nuit et maintenant que je suis pensionnée j'avais beaucoup de mal à récupérer un rythme normal de sommeil et vous m'avez énormément aidé. Juste merci !</p>
+            <span class="testimonial-date">Publié le 01 avril 2026</span>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-top">
+                <div class="testimonial-user">
+                                    <div class="testimonial-avatar">
+    <img src="images/jonas.png" alt="Jonas Labenne">
+</div>
+            
+                    <div>
+                        <strong>Jonas Labenne</strong>
+                        <div class="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
+            </div>
+            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
+            <p>Ils ont vraiment pensé à tout, même à intégrer un infuseur qu'on ne doit pas aller chercher en plus, plus haut de gamme que beaucoup d'autre et surtout très complet. Rituel au top et efficace dès la première utilisation.</p>
+            <span class="testimonial-date">Publié le 03 avril 2026</span>
+        </article>
+    </div>
+</section>
+
+    <div class="container">
+    <div class="product">
+        <h2>Rituel sommeil</h2>
+        <p>Offrez-vous des nuits paisibles avec notre première box exclusive.</p>
+
+        <form>
+            <input type="email" placeholder="Votre email" required>
+            <button type="submit">Rejoindre la liste d'attente</button>
+        </form>
+    </div>
+</div>
+<hr>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-left">
+      <div class="logo">
+        🌙 <span>NOCTUA</span>
+      </div>
+
+      <p>
+        Un rituel complet pensé pour apaiser votre esprit, relâcher 
+        les tensions et vous guider naturellement vers un sommeil profond.
+      </p>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-links">
+      <h4>LIENS RAPIDES</h4>
+    <a href="index.html">Produits</a>
+    <a href="about.html">Notre Histoire</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy_policy.html">Politique de Confidentialité</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-contact">
+      <h4>CONTACT</h4>
+      <p>✉ contact@nuit-sereine.fr</p>
+
+      <div class="socials">
+        <div class="social">📷</div>
+        <div class="social">📘</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <span>© 2026 NOCTUA. Tous droits réservés.</span>
+
+    <div class="footer-bottom-links">
+    <a href="conditions_utilisation.html">Conditions d'Utilisation</a>
+    <a href="privacy_policy.html">Politique de Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// HEADER HIDE / SHOW
+let prevScrollpos = window.pageYOffset;
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+    let currentScrollPos = window.pageYOffset;
+    header.style.top = prevScrollpos > currentScrollPos ? "0" : "-120px";
+    prevScrollpos = currentScrollPos;
+});
+
+// SCROLL ANIMATIONS avec Intersection Observer
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, observerOptions);
+
+// Observer tous les éléments à animer
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    elements.forEach(el => observer.observe(el));
+});
+
+// Fallback pour le cas où DOMContentLoaded est déjà passé
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        elements.forEach(el => observer.observe(el));
+    });
+} else {
+    const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    elements.forEach(el => observer.observe(el));
+}
+</script>
+
+</body>
+</html>

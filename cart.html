@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Consultez votre panier NOCTUA avant de valider votre commande.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Panier NOCTUA">
+<meta property="og:description" content="Vérifiez les produits ajoutés à votre panier avant commande.">
+<meta name="twitter:card" content="summary"><title>Panier | NOCTUA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    font-family:'Montserrat',sans-serif;
+    background:radial-gradient(circle at top, #132a52, #050d1f 80%);
+    color:#f5f5f5;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* PARTICULES */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity:0.2;
+    animation:moveStars 60s linear infinite;
+}
+
+@keyframes moveStars{
+    from{transform:translateY(0);}
+    to{transform:translateY(-2000px);}
+}
+
+/* HEADER FIXE + DYNAMIQUE */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:40px;
+    padding:0 40px;
+    height:100px;
+    background:#050d1f;
+    transition:top 0.4s;
+}
+
+/* LOGO */
+.logo img{
+    height:85px;
+}
+
+/* NAVIGATION */
+.header-right{
+    display:flex;
+    gap:30px;
+    align-items:center;
+    margin-left:auto;
+}
+
+.header-right a{
+    text-decoration:none;
+    color:#eee;
+    font-weight:300;
+    position:relative;
+    transition:0.3s;
+}
+
+.header-right a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    bottom:-5px;
+    left:0;
+    background:linear-gradient(90deg,#ffd700,#b8860b);
+    transition:0.4s;
+}
+
+.header-right a:hover{
+    color:#ffd700;
+}
+
+.header-right a:hover::after{
+    width:100%;
+}
+
+/* Menu Produits */
+.dropdown{
+    position:relative;
+}
+.dropdown-content{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background:#050d1f;
+    border:1px solid rgba(255,215,0,0.3);
+    border-radius:8px;
+    min-width:180px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.5);
+    z-index:1000;
+    flex-direction:column;
+}
+.dropdown-content a{
+    padding:10px 15px;
+    display:block;
+    color:#eee;
+}
+.dropdown-content a:hover{
+    background:rgba(255,215,0,0.1);
+    color:#ffd700;
+}
+.dropdown:hover .dropdown-content{
+    display:flex;
+}
+
+/* CONTAINER */
+.container{
+    padding:140px 10%;
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+/* TITRES ET PARAGRAPHES */
+h1,h2{
+    font-family:'Playfair Display', serif;
+    color:#ffd700;
+    margin-bottom:15px;
+}
+h1{
+    font-size:40px;
+    margin-bottom:30px;
+}
+p{
+    margin-bottom:20px;
+    font-size:18px;
+    color:#f0e6d2;
+}
+
+/* FOOTER */
+footer{
+    margin-top:60px;
+    padding:30px;
+    text-align:center;
+    background:#050d1f;
+    border-top:1px solid rgba(255,215,0,0.2);
+    font-family:'Playfair Display',serif;
+    color:#ccc;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    header{
+        flex-direction:column;
+        gap:15px;
+        padding:20px 5%;
+    }
+    .logo img{
+        height:60px;
+    }
+    .header-right{
+        gap:15px;
+    }
+    .container{
+        padding:160px 5%;
+    }
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo NOCTUA">
+  </div>
+
+  <div class="header-right">
+    <a href="index.html">Accueil</a>
+    <div class="dropdown">
+        <a href="#">Produits ▼</a>
+        <div class="dropdown-content">
+            <a href="#">Rituel sommeil</a>
+            <a href="#">Rituel bien-être</a>
+            <a href="#">Rituel cocooning</a>
+        </div>
+    </div>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Panier</a>
+  </div>
+</header>
+
+<div class="container">
+  <h1>Panier</h1>
+  <p>Votre panier est vide.</p>
+</div>
+
+<footer>
+  © 2026 NOCTUA
+</footer>
+
+<script>
+// HEADER DISPARAÎT AU SCROLL
+let prevScrollpos = window.pageYOffset;
+const header = document.getElementById("header");
+
+window.onscroll = function() {
+  let currentScrollPos = window.pageYOffset;
+  if(prevScrollpos > currentScrollPos){
+    header.style.top="0";
+  } else {
+    header.style.top="-120px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+</body>
+</html>
