@@ -262,19 +262,23 @@ header {
 
 .hero-cta {
     position: absolute;
-    bottom: 100px; /* 👈 plus haut */
+    bottom: 155px; /* encore plus haut */
     right: 55px;   /* 👈 un peu plus à droite */
     z-index: 3;
 }
 
 .cta-button {
     font-family: 'Playfair Display';
-    font-size: 18px;
+    font-size: 20px;
     padding: 16px 32px;
     border-radius: 40px;
     text-decoration: none;
-    color: #173f7a;
+    color: #0d3f98;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.45), 0 2px 8px rgba(0,0,0,0.35);
     background: linear-gradient(45deg, #a5b91d, #876b1e);
+    border: 1px solid rgba(255,255,255,0.2);
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
     display: inline-block;
@@ -306,7 +310,7 @@ header {
     .hero-cta {
         right: 50%;
         transform: translateX(50%);
-        bottom: 40px;
+        bottom: 74px;
     }
 }
 
@@ -398,6 +402,26 @@ header {
     width: 100%;
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.section-image img[src="images/photo1.png"] {
+    width: min(130%, 840px);
+    height: clamp(410px, 48vw, 590px);
+    max-width: none;
+    margin-left: 53%;
+    transform: translateX(-50%);
+    object-fit: cover;
+    object-position: 60% center;
+}
+
+.section-image img[src="images/photo2.png"] {
+    width: min(130%, 840px);
+    height: clamp(410px, 48vw, 590px);
+    max-width: none;
+    margin-left: 53%;
+    transform: translateX(-50%);
+    object-fit: cover;
+    object-position: 52% center;
 }
 
 /* RESPONSIVE */
@@ -1081,6 +1105,14 @@ html {
     margin-bottom: clamp(0.55rem, 1.2vw, 1rem);
 }
 
+.hero-image-scroll.happy-people .image-overlay h3 {
+    margin-bottom: clamp(0.05rem, 0.25vw, 0.18rem);
+}
+
+.hero-image-scroll.happy-people .image-overlay h3:last-of-type {
+    margin-bottom: clamp(0.45rem, 1vw, 0.8rem);
+}
+
 /* ===== LISTE ===== */
 
 .problems {
@@ -1115,10 +1147,6 @@ html {
     opacity: 0.8;
 
     flex-shrink: 0; /* 🔥 empêche le chevauchement */
-}
-
-.hero-image-scroll.happy-people .problems li::before {
-    content: "😊";
 }
 
 /* ===== TEXTE FINAL ===== */
@@ -1236,6 +1264,24 @@ html {
     stroke: #ffd36b;
     fill: none;
     stroke-width: 2;
+}
+
+.image-2 .benefits .icon {
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+.image-2 .benefits .icon svg {
+    display: none;
+}
+
+.image-2 .benefits .icon::before {
+    content: "😊";
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1;
 }
 
 /* TEXTE */
@@ -1939,12 +1985,24 @@ html {
         height: auto;
     }
 
-    .section-image img[src="images/photo1.png"],
-    .section-image img[src="images/photo2.png"] {
-        width: min(185vw, 1180px);
+    .section-image img[src="images/photo1.png"] {
+        width: min(132vw, 840px);
+        height: clamp(320px, 80vw, 450px);
         max-width: none;
-        margin-left: 50%;
+        margin-left: 53%;
         transform: translateX(-50%);
+        object-fit: cover;
+        object-position: 60% center;
+    }
+
+    .section-image img[src="images/photo2.png"] {
+        width: min(132vw, 840px);
+        height: clamp(320px, 80vw, 450px);
+        max-width: none;
+        margin-left: 53%;
+        transform: translateX(-50%);
+        object-fit: cover;
+        object-position: 52% center;
     }
 
     .section3-image img[src="images/photo3.png"] {
@@ -2130,7 +2188,7 @@ html {
 </header>
 
 <section class="hero-banner">
-    <img src="images/baniere.png" class="hero-bg">
+    <img src="images/Votre texte de paragraphe (11).png" class="hero-bg">
    
     <div class="marquee">
         <div class="marquee-content">
@@ -2139,12 +2197,12 @@ html {
     </div>
 
     <div class="hero-cta">
-        <a href="#" class="cta-button">Dormez mieux dés ce soir</a>
+        <a href="#" class="cta-button">Dormez mieux dès ce soir</a>
     </div>
 </section>
 
 
-<section class="hero-image-scroll happy-people">
+<section class="hero-image-scroll">
 
     <img src="images/ppg.png" alt="Sommeil">
    
