@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Avis - NOCTUA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,12 +24,28 @@ header {
     gap: 22px;
     padding: 0 18px;
     height: 100px;
-    background: #050d1f;
-    backdrop-filter: blur(10px);
+    background: rgba(5, 13, 31, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .logo img {
     height: 85px;
+}
+
+/* Skip link for accessibility */
+.skip-link{
+    position: absolute;
+    left: -999px;
+    top: 8px;
+    background: #ffd700;
+    color: #050d1f;
+    padding: 8px 12px;
+    border-radius: 6px;
+    z-index: 2000;
+}
+.skip-link:focus{
+    left: 18px;
 }
 
 /* NAV */
@@ -119,12 +135,14 @@ header {
 
 body {
     margin: 0;
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Inter", sans-serif;
     background:
-        radial-gradient(circle at top, rgba(10,25,50,1), #050d1f 70%);
+        radial-gradient(circle at top, rgba(18,38,72,1), #050d1f 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 45%);
     color: #fff;
     padding-top: 100px;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
 /* =========================
@@ -133,7 +151,7 @@ body {
 
 .hero-avis {
     text-align: center;
-    padding: 90px 20px 70px;
+    padding: 96px 20px 76px;
     position: relative;
 }
 
@@ -168,17 +186,18 @@ body {
 
 .hero-avis h1 {
     font-family: "Playfair Display", serif;
-    font-size: 58px;
+    font-size: clamp(46px, 6vw, 66px);
     margin-bottom: 20px;
     color: #fff;
+    letter-spacing: 0.3px;
 }
 
 .hero-avis p {
     max-width: 760px;
     margin: auto;
-    line-height: 1.8;
+    line-height: 1.75;
     color: #c9d2e1;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /* =========================
@@ -190,15 +209,15 @@ body {
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
-    margin-top: 60px;
+    margin-top: 56px;
 }
 
 .stat-card {
     width: 220px;
-    padding: 30px;
+    padding: 28px 24px;
     border-radius: 24px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+    border: 1px solid rgba(255,255,255,0.10);
     backdrop-filter: blur(12px);
     text-align: center;
     transition: 0.4s;
@@ -210,8 +229,8 @@ body {
 }
 
 .stat-number {
-    font-size: 42px;
-    font-weight: bold;
+    font-size: 40px;
+    font-weight: 700;
     color: #f2c66d;
     margin-bottom: 10px;
 }
@@ -227,7 +246,7 @@ body {
 .testimonials {
     max-width: 1280px;
     margin: auto;
-    padding: 20px 24px 100px;
+    padding: 10px 24px 110px;
 }
 
 .testimonials-head {
@@ -243,7 +262,7 @@ body {
 
 .testimonials-head h2 {
     font-family: "Playfair Display", serif;
-    font-size: 44px;
+    font-size: clamp(34px, 4vw, 46px);
     margin: 18px 0;
 }
 
@@ -276,6 +295,9 @@ body {
     border: 1px solid rgba(255,255,255,0.08);
     backdrop-filter: blur(14px);
     transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .testimonial-card:hover {
@@ -298,7 +320,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    gap: 18px;
 }
 
 .testimonial-user {
@@ -313,12 +335,14 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid rgba(255,215,0,0.35);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
 .verified-line {
     color: #89ffb5;
     font-size: 13px;
     margin-top: 4px;
+    font-weight: 600;
 }
 
 .trustpilot-badge {
@@ -328,11 +352,11 @@ body {
     border-radius: 40px;
     font-size: 12px;
     border: 1px solid rgba(255,215,0,0.2);
+    white-space: nowrap;
 }
 
 .testimonial-stars {
     color: #ffd700;
-    margin-bottom: 18px;
     font-size: 18px;
 }
 
@@ -344,12 +368,16 @@ body {
 .testimonial-card p {
     line-height: 1.8;
     color: #dfe7f4;
-    margin-bottom: 24px;
+    margin: 0;
+    font-size: 15.5px;
+    font-style: italic;
+    white-space: pre-line;
 }
 
 .testimonial-date {
     color: #8896aa;
     font-size: 13px;
+    margin-top: auto;
 }
 
 /* =========================
@@ -371,7 +399,7 @@ body {
 
 .cta-section h2 {
     font-family: "Playfair Display", serif;
-    font-size: 42px;
+    font-size: clamp(34px, 4vw, 44px);
     margin-bottom: 20px;
 }
 
@@ -407,6 +435,7 @@ body {
     text-align: center;
     color: #cfcfcf;
     border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(5,13,31,0.35);
 }
 
 /* =========================
@@ -415,64 +444,132 @@ body {
 
 @media (max-width: 768px) {
 
+    /* Header: larger touch targets and subtle spacing */
     header {
-        height: 52px;
-        padding: 4px 8px;
+        height: 64px;
+        padding: 8px 16px;
     }
 
     .logo img {
-        height: 34px;
+        height: 42px;
     }
 
     .header-right {
-        gap: 8px;
+        gap: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
     .header-right a {
-        font-size: 9px;
+        font-size: 12px;
+        padding: 6px 8px;
+        border-radius: 8px;
     }
 
     .cart {
-        font-size: 10px;
-        margin-right: 0;
+        font-size: 13px;
+        margin-right: 4px;
     }
 
     body {
-        padding-top: 52px;
+        padding-top: 64px;
     }
 
+    /* Hero adjustments */
     .hero-avis {
-        padding: 70px 18px 50px;
+        padding: 80px 18px 60px;
     }
 
     .hero-avis h1 {
-        font-size: 38px;
+        font-size: clamp(28px, 8vw, 42px);
+        margin-bottom: 18px;
     }
 
     .hero-avis p {
-        font-size: 15px;
+        font-size: 16px;
+        padding: 0 8px;
+    }
+
+    .hero-tag {
+        padding: 8px 14px;
+        font-size: 13px;
     }
 
     .testimonials-head h2 {
-        font-size: 34px;
+        font-size: clamp(22px, 5vw, 34px);
     }
 
+    /* Testimonials: single column, clearer cards */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 12px;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .testimonial-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .testimonial-avatar img {
+        width: 72px;
+        height: 72px;
+        border-radius: 12px;
+    }
+
+    .trustpilot-badge {
+        margin-left: auto;
+        font-size: 12px;
+    }
+
+    .testimonial-stars {
+        font-size: 16px;
+    }
+
+    .testimonial-card p {
+        font-size: 15px;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .testimonial-date {
+        font-size: 13px;
+        color: #9aa6b8;
+        margin-top: 6px;
+    }
+
+    /* CTA full width */
     .cta-section {
-        padding: 40px 24px;
-        margin: 20px;
+        padding: 28px 18px;
+        margin: 18px;
     }
 
-    .cta-section h2 {
-        font-size: 32px;
+    .cta-btn {
+        display: block;
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 16px;
     }
+
 }
 
 </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#testimonials-root">Aller aux avis</a>
 
-<header id="header">
+<header id="header" role="banner">
 
     <div class="logo">
         <img src="images/logo.png" alt="NOCTUA">
@@ -569,7 +666,7 @@ body {
 
 <!-- AVIS -->
 
-<section class="testimonials">
+<section class="testimonials" role="main" aria-labelledby="testimonials-heading">
 
     <div class="testimonials-head">
 
@@ -577,7 +674,7 @@ body {
             🌙 Ils dorment enfin mieux avec NOCTUA
         </span>
 
-        <h2>Ce qu’en disent nos clients</h2>
+        <h2 id="testimonials-heading">Ce qu’en disent nos clients</h2>
 
         <p>
             Des retours sincères et détaillés qui illustrent les résultats obtenus
@@ -586,209 +683,7 @@ body {
 
     </div>
 
-    <div class="testimonials-grid">
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/sara.png" alt="Sarah Labenne">
-                    </div>
-                    <div>
-                        <strong>Sarah Labenne</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “Je suis extrêmement satisfaite des produits !
-Le travail réalisé est vraiment de grande qualité et très complet, 
-je suis insomniaque et j’ai pourtant dormi comme un bébé.
-J’ai hâte du jour de lancement officiel, j’adore, j’adhère totalement !"
-            </p>
-            <span class="testimonial-date">Publié le 23 mars 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/vanessa.png" alt="Vanessa Serrien">
-                    </div>
-                    <div>
-                        <strong>Vanessa Serrien</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>“Le résultat a dépassé mes attentes !
-Mon compagnon et moi-même utilisons le coffret très souvent,
-on devient de vrai marmotte, trop fan.
-Je recommande à 100% !”</p>
-            <span class="testimonial-date">Publié le 26 mars 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/virg_ninie.png" alt="Virg Ninie Mimi">
-                    </div>
-                    <div>
-                        <strong>Virg Ninie Mimi</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “Ravie de la qualité des produits et du service !
-Trop heureuse d’avoir été choisie pour essayer le concept
-avant tout le monde,je n’en ressort que du positif et
-surtout de très bonne nuit !! Vivement conseillé.”
-            </p>
-            <span class="testimonial-date">Publié le 26 mars 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/nathalie.png" alt="Nathalie Minne">
-                    </div>
-                    <div>
-                        <strong>Nathalie Minne</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “On valide, concept complet, réaliste et efficace”
-            </p>
-            <span class="testimonial-date">Publié le 27 mars 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/arnaud.png" alt="Arnaud Zeylen">
-                    </div>
-                    <div>
-                        <strong>Arnaud Zeylen</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “L’équipe est très pro, réactive et à l’écoute.
-Très bonne expérience et projet au top, j’achète les yeux fermé.
-Je recommande vraiment”
-            </p>
-            <span class="testimonial-date">Publié le 30 mars 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/gregori.png" alt="Grégory Gérard">
-                    </div>
-                    <div>
-                        <strong>Grégory Gérard</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “J’ai fait partie des sélectionnés pour essayer le coffret et mon
-envie de dormir m’a clairement surpris, je suis pourtant robuste. 
-Excellent !”
-            </p>
-            <span class="testimonial-date">Publié le 30 mars 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                  <div class="testimonial-avatar">
-                        <img src="images/audrey.png" alt="Audrey Sunshin">
-                    </div>
-                    <div>
-                        <strong>Audrey Sunshin</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “Noctua est devenu ma routine, mon rituel du soir et cela fait
-vraiment beaucoup de bien de se sentir apaisé après
-de grosse journée stressante au boulot.
-Super produit qualitatif et je recommande à 100% !”
-            </p>
-            <span class="testimonial-date">Publié le 01 avril 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/christine.png" alt="Christine Callier">
-                    </div>
-                    <div>
-                        <strong>Christine Callier</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “J’ai fait toute ma carrière en tant qu’infirmière de nuit et
-maintenant que je suis pensionnée j’avais beaucoup de mal 
-à recupérer un rythme normal de sommeil et vous m’avez 
-énormément aidé. Juste merci !!”
-            </p>
-            <span class="testimonial-date">Publié le 01 avril 2026</span>
-        </article>
-
-        <article class="testimonial-card">
-            <div class="testimonial-top">
-                <div class="testimonial-user">
-                    <div class="testimonial-avatar">
-                        <img src="images/jonas.png" alt="Jonas Labenne">
-                    </div>
-                    <div>
-                        <strong>Jonas Labenne</strong>
-                        <div class="verified-line">✅ Avis vérifié</div>
-                    </div>
-                </div>
-                <div class="trustpilot-badge">★ Excellent · 4,9/5</div>
-            </div>
-            <div class="testimonial-stars">★★★★★ <span>Trustpilot</span></div>
-            <p>
-                “Ils ont vraiment pensé à tout, même à intégrer un infuseur qu’on
-ne doit pas aller chercher en plus, plus haut de gamme que 
-beaucoup d’autre et surtout très complet.
-Rituel au top et efficace dès la première utilisation.”
-            </p>
-            <span class="testimonial-date">Publié le 03 avril 2026</span>
-        </article>
-
-    </div>
+    <div id="testimonials-root" class="testimonials-grid"></div>
 
 </section>
 
@@ -813,6 +708,57 @@ Rituel au top et efficace dès la première utilisation.”
     © 2026 NOCTUA. Tous droits réservés.
 </footer>
 
+<!-- React (dev via CDN) -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+// Données d'avis (réutilisent les images existantes)
+const testimonials = [
+    {name: 'Sarah Labenne', avatar: 'images/sara.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Je suis extrêmement satisfaite des produits !\nLe travail réalisé est vraiment de grande qualité et très complet,\nje suis insomniaque et j’ai pourtant dormi comme un bébé.\nJ’ai hâte du jour de lancement officiel, j’adore, j’adhère totalement !`, date: 'Publié le 23 mars 2026'},
+    {name: 'Vanessa Serrien', avatar: 'images/vanessa.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Le résultat a dépassé mes attentes !\nMon compagnon et moi-même utilisons le coffret très souvent,\non devient de vrai marmotte, trop fan.\nJe recommande à 100% !`, date: 'Publié le 26 mars 2026'},
+    {name: 'Virg Ninie Mimi', avatar: 'images/virg_ninie.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Ravie de la qualité des produits et du service !\nTrop heureuse d’avoir été choisie pour essayer le concept\navant tout le monde, je n’en ressort que du positif et\nsurtout de très bonne nuit !! Vivement conseillé.`, date: 'Publié le 26 mars 2026'},
+    {name: 'Nathalie Minne', avatar: 'images/nathalie.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `On valide, concept complet, réaliste et efficace`, date: 'Publié le 27 mars 2026'},
+    {name: 'Arnaud Zeylen', avatar: 'images/arnaud.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `L’équipe est très pro, réactive et à l’écoute.\nTrès bonne expérience et projet au top, j’achète les yeux fermés.\nJe recommande vraiment`, date: 'Publié le 30 mars 2026'},
+    {name: 'Grégory Gérard', avatar: 'images/gregori.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `J’ai fait partie des sélectionnés pour essayer le coffret et mon\nenvie de dormir m’a clairement surpris, je suis pourtant robuste.\nExcellent !`, date: 'Publié le 30 mars 2026'},
+    {name: 'Audrey Sunshin', avatar: 'images/audrey.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Noctua est devenu ma routine, mon rituel du soir et cela fait\nvraiment beaucoup de bien de se sentir apaisé après\nde grosse journée stressante au boulot.\nSuper produit qualitatif et je recommande à 100% !`, date: 'Publié le 01 avril 2026'},
+    {name: 'Jonas Labenne', avatar: 'images/jonas.png', badge: '★ Excellent · 4,9/5', stars: '★★★★★', text: `Ils ont vraiment pensé à tout, même à intégrer un infuseur qu’on\nne doit pas aller chercher en plus, plus haut de gamme que\nbeaucoup d’autre et surtout très complet.\nRituel au top et efficace dès la première utilisation.`, date: 'Publié le 03 avril 2026'}
+];
+
+function TestimonialCard({t}){
+    return (
+        <article className="testimonial-card">
+            <div className="testimonial-top">
+                <div className="testimonial-user">
+                    <div className="testimonial-avatar"><img src={t.avatar} alt={t.name} /></div>
+                    <div>
+                        <strong>{t.name}</strong>
+                        <div className="verified-line">✅ Avis vérifié</div>
+                    </div>
+                </div>
+                <div className="trustpilot-badge">{t.badge}</div>
+            </div>
+            <div className="testimonial-stars">{t.stars} <span>Trustpilot</span></div>
+            <p>{t.text}</p>
+            <span className="testimonial-date">{t.date}</span>
+        </article>
+    );
+}
+
+function TestimonialsGrid(){
+    return (
+        <>
+            {testimonials.map((t, i) => <TestimonialCard key={i} t={t} />)}
+        </>
+    );
+}
+
+// Render
+const root = ReactDOM.createRoot(document.getElementById('testimonials-root'));
+root.render(<TestimonialsGrid />);
+</script>
+
 <script>
 
 let prevScrollpos = window.pageYOffset;
@@ -820,12 +766,12 @@ const header = document.getElementById("header");
 
 window.addEventListener("scroll", () => {
 
-    let currentScrollPos = window.pageYOffset;
+        let currentScrollPos = window.pageYOffset;
 
-    header.style.top =
-        prevScrollpos > currentScrollPos ? "0" : "-120px";
+        header.style.top =
+                prevScrollpos > currentScrollPos ? "0" : "-120px";
 
-    prevScrollpos = currentScrollPos;
+        prevScrollpos = currentScrollPos;
 });
 
 </script>
