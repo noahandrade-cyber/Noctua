@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contactez NOCTUA pour toute question sur la box sommeil, les commandes ou la liste d'attente.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact NOCTUA">
+<meta property="og:description" content="Écrivez à NOCTUA pour toute question sur la box sommeil et les commandes.">
+<meta name="twitter:card" content="summary"><title>Contact | NOCTUA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:radial-gradient(circle at top,#071327,#050d1f 80%);
+  color:#f5f5f5;
+  line-height:1.6;
+  overflow-x:hidden;
+  position:relative;
+}
+#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}
+.star{position:absolute;border-radius:50%;background:white;opacity:0.7;animation: twinkle linear infinite;}
+@keyframes twinkle{0%,100%{opacity:0.2;}50%{opacity:1;}}
+
+/* ÉTOILES FILANTES */
+.shooting-star{
+  position:fixed;
+  width:2px;
+  height:80px;
+  background: linear-gradient(to top, white, rgba(255,255,255,0));
+  border-radius:50%;
+  opacity:0;
+  pointer-events:none;
+  z-index:999;
+}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;gap:40px;padding:0 40px;height:100px;background:#050d1f;transition:top 0.4s;}
+.logo img{height:85px;}
+.header-right{display:flex;gap:30px;align-items:center;margin-left:auto;}
+.header-right a{text-decoration:none;color:#eee;font-weight:300;position:relative;transition:0.3s;}
+.header-right a::after{content:"";position:absolute;width:0;height:2px;bottom:-5px;left:0;background:linear-gradient(90deg,#ffd700,#b8860b);transition:0.4s;}
+.header-right a:hover{color:#ffd700;}
+.header-right a:hover::after{width:100%;}
+
+.container{padding:140px 10%; max-width:900px; margin:auto; text-align:center; position:relative; z-index:1;}
+.back-link{display:inline-block;margin-bottom:18px;color:#d4a64a;text-decoration:none;font-size:14px;}
+form input,form textarea{width:100%;padding:15px;margin:10px 0;border:none;border-radius:12px;background:rgba(255,255,255,0.1);color:white;font-size:16px;}
+form textarea{resize:vertical;min-height:120px;}
+form input::placeholder,form textarea::placeholder{color:#bbb;}
+button{background:linear-gradient(45deg,#ffd700,#b8860b);border:none;padding:15px 30px;color:#050d1f;font-weight:bold;cursor:pointer;border-radius:12px;transition:all 0.3s;font-family:'Playfair Display',serif;}
+button:hover{background:#f0d24c; transform:scale(1.05);}
+#form-message{margin-top:15px;font-family:'Montserrat',sans-serif;font-size:16px;padding:10px 15px;border-radius:8px;display:none;opacity:0;transition:opacity 0.5s;max-width:400px;margin-left:auto;margin-right:auto;}
+.success{background:rgba(0,200,0,0.8);color:white;}
+.error{background:rgba(200,0,0,0.8);color:white;}
+footer{margin-top:60px;padding:30px;text-align:center;background:#050d1f;border-top:1px solid rgba(255,215,0,0.2);font-family:'Playfair Display',serif;color:#ccc;}
+@media(max-width:768px){header{flex-direction:row;gap:0;padding:8px 5%;height:50px;}.logo img{height:40px;}.header-right{display:none;gap:15px;}.container{padding:80px 5%;}footer{margin-top:30px;padding:12px 15px;font-size:0.85rem;}}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<header id="header">
+  <div class="logo"><img src="images/logo.png" alt="Logo NOCTUA"></div>
+  <div class="header-right">
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Panier</a>
+  </div>
+</header>
+
+<div class="container">
+  <a class="back-link" href="index.html">← Retour à l'accueil</a>
+  <h1>Contact</h1>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Votre nom" required>
+    <input type="email" name="email" placeholder="Votre email" required>
+    <textarea name="message" placeholder="Votre message" required></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+  <div id="form-message"></div>
+</div>
+
+<footer>© 2026 NOCTUA</footer>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+// HEADER
+let prevScrollpos = window.pageYOffset;
+const header = document.getElementById("header");
+window.onscroll = function(){
+  let currentScrollPos = window.pageYOffset;
+  header.style.top = prevScrollpos > currentScrollPos ? "0" : "-120px";
+  prevScrollpos = currentScrollPos;
+}
+
+// ÉTOILES
+const starCount = 150;
+const starsContainer = document.getElementById('stars');
+for(let i=0;i<starCount;i++){
+  const star=document.createElement('div'); star.classList.add('star');
+  const size=Math.random()*2+1; star.style.width=size+'px'; star.style.height=size+'px';
+  star.style.top=Math.random()*window.innerHeight+'px';
+  star.style.left=Math.random()*window.innerWidth+'px';
+  star.style.animationDuration=(Math.random()*3+2)+'s';
+  star.style.opacity=Math.random()*0.5+0.5;
+  starsContainer.appendChild(star);
+}
+
+// ÉTOILES FILANTES
+function shootingStar(){
+  const star = document.createElement('div');
+  star.classList.add('shooting-star');
+  
+  const startX = Math.random()*window.innerWidth;
+  const startY = Math.random()*window.innerHeight/2;
+  const angle = Math.random()*Math.PI/2 - Math.PI/4; // angle -45° à +45°
+  const length = Math.random()*150 + 100; // longueur aléatoire
+  const duration = Math.random()*1000 + 1000; // vitesse aléatoire
+
+  star.style.width = "2px";
+  star.style.height = length + "px";
+  star.style.top = startY + "px";
+  star.style.left = startX + "px";
+  star.style.background = "linear-gradient(to top, white, rgba(255,255,255,0))";
+
+  // Animation via transform
+  star.animate([
+    { transform: `translate(0,0) rotate(${angle}rad)`, opacity:1 },
+    { transform: `translate(${Math.cos(angle)*length}px, ${Math.sin(angle)*length}px) rotate(${angle}rad)`, opacity:0 }
+  ], { duration: duration, easing: 'linear', fill: 'forwards' });
+
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(), duration);
+}
+setInterval(shootingStar, 2000); // une étoile filante toutes les 2 sec
+
+// EmailJS init
+(function(){ emailjs.init('YOUR_PUBLIC_KEY'); })();
+
+const form = document.getElementById('contact-form');
+const formMessage = document.getElementById('form-message');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  emailjs.sendForm('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',this)
+    .then(()=>{
+      formMessage.textContent = "Message envoyé avec succès !";
+      formMessage.className = "success";
+      formMessage.style.display = "block";
+      setTimeout(()=>formMessage.style.opacity = 1,10);
+      form.reset();
+      setTimeout(()=>{
+        formMessage.style.opacity = 0;
+        setTimeout(()=>formMessage.style.display="none",500);
+      },4000);
+    })
+    .catch(err=>{
+      console.error(err);
+      formMessage.textContent = "Erreur lors de l'envoi, veuillez réessayer.";
+      formMessage.className = "error";
+      formMessage.style.display = "block";
+      setTimeout(()=>formMessage.style.opacity = 1,10);
+      setTimeout(()=>{
+        formMessage.style.opacity = 0;
+        setTimeout(()=>formMessage.style.display="none",500);
+      },4000);
+    });
+});
+</script>
+
+</body>
+</html>
