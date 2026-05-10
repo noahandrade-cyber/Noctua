@@ -1837,7 +1837,7 @@ html {
 /* ===== TITRE ===== */
 .rituel-title {
     position: absolute;
-    top: 6%;
+    top: 4%;
     left: 50%;
     transform: translateX(-50%);
 
@@ -1848,7 +1848,7 @@ html {
 /* ===== STEP 1 (HAUT DROITE) ===== */
 .step-1 {
     position: absolute;
-    top: 14%;
+    top: 10%;
     right: 14%;
     text-align: left;
     max-width: 260px;
@@ -1876,19 +1876,27 @@ html {
 .step h3 {
     font-size: clamp(2rem, 2.8vw, 2.8rem);
     color: #ffd36b;
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: clamp(2.4rem, 4vw, 3.5rem);
 }
 
 /* ===== TEXTE ===== */
 .step p {
-    font-size: clamp(1.4rem, 1.9vw, 1.8rem);
-    line-height: 1.4;
+    font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+    line-height: 1.25;
 }
 
 /* ===== STYLE LUXE ===== */
 .step p strong {
     display: block;
     margin-bottom: clamp(0.5rem, 1vw, 0.8rem);
+}
+
+.step .line {
+    display: block;
+}
+
+.step .line.nowrap {
+    white-space: nowrap;
 }
 
 
@@ -1901,7 +1909,7 @@ html {
 /* ===== TEXTE BAS ===== */
 .rituel-bottom {
     position: absolute;
-    bottom: 4%;
+    bottom: 1%;
     left: 30%;
     transform: translateX(-50%);
     text-align: center;
@@ -1910,7 +1918,7 @@ html {
     font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     font-weight: 600;
     max-width: 600px;
-    line-height: 1.6;
+    line-height: 1.4;
     white-space: normal;
     color: #f5d7a1;
 }
@@ -2562,7 +2570,6 @@ html {
     }
 
     .hero-image-scroll.image-4 .step p {
-        font-size: clamp(1.2rem, 4.2vw, 1.6rem);
         line-height: 1.35;
     }
 
@@ -2836,21 +2843,27 @@ html, body {
 
 .coffret-stars{
     position:absolute;
-    top:15%;
+    top:11%;
     left:18%;
 
-    font-size:clamp(1.8rem,3vw,2.6rem);
-    color:#ffd36b;
+    font-size:clamp(2rem,3.5vw,3rem);
+    color:#FFD700;
     letter-spacing:6px;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 12px rgba(255, 215, 0, 0.7);
+    font-weight: 700;
 }
 
 .coffret-stars span{
     margin-left:6px;
 
     font-family:'Montserrat', sans-serif;
-    font-size:clamp(1rem,1.4vw,1.4rem);
+    font-size:clamp(1.3rem,1.8vw,1.8rem);
     color:#fff5d8;
     letter-spacing:0;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 /* LISTE */
@@ -3327,8 +3340,8 @@ html, body {
 
         <!-- ÉTOILES -->
         <div class="coffret-stars">
-            ★★★★★
-            <span>Tous nos testeurs sont conquis et ont adopté notre rituel</span>
+            
+            <span>⭐⭐⭐⭐⭐ Tous nos testeurs sont conquis et ont adopté notre rituel</span>
         </div>
 
         <!-- LISTE -->
@@ -3392,27 +3405,33 @@ html, body {
         <div class="step step-1">
             <h3>1. Respirez</h3>
             <p>
-                <strong>Vaporisez votre brume</strong>
-                <span>Et laissez le calme s'installer</span>
+                <span class="line nowrap">Libérez un nuage de brume</span>
+                <span class="line">Et laissez le calme</span>
+                <span class="line">Se déposer sur vos sens.</span>
             </p>
         </div>
         
         <div class="step step-2">
             <h3>2. Savourez</h3>
             <p>
-                Dégustez votre infusion et relâcher<br>les tensions avec un<br>fond sonore apaisant
+                <span class="line nowrap">Dégustez votre infusion</span>
+                <span class="line">Et dénouez chaque</span>
+                <span class="line nowrap">Tension au rythme d'une</span>
+                <span class="line">Mélodie apaisante.</span>
             </p>
         </div>
         
         <div class="step step-3">
             <h3>3. Dormez</h3>
             <p>
-                <strong>Masque + diffuseur d'ambiance<br>relaxante pour un lâcher prise total</strong>
+                <span class="line">Masque + diffuseur</span>
+                <span class="line">d'ambiance relaxante</span>
+                <span class="line">pour un lâcher-prise total.</span>
             </p>
         </div>
         
         <div class="rituel-bottom">
-            En quelques minutes votre corps comprend qu'il est temps de dormir.
+            En quelques instants. Votre corps s'abandonne À la douceur du sommeil.
         </div>
         
     </div>
