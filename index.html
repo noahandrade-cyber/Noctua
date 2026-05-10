@@ -278,9 +278,10 @@ header {
 
 .hero-cta {
     position: absolute;
-    right: clamp(12px, 2.5vw, 28px);
-    bottom: clamp(8px, 1.5vw, 18px);
-    z-index: 3;
+    right: 6%; /* ancré près du côté droit */
+    bottom: 0; /* colle le bouton au bas de l'image */
+    z-index: 5;
+    pointer-events: auto;
 }
 
 .cta-button {
@@ -3384,7 +3385,7 @@ html, body {
         <img src="images/baniere.png" class="hero-bg">
 
         <div class="hero-cta">
-            <a href="#" class="cta-button">Découvrir le coffret</a>
+            <a href="#" class="cta-button">Je veux mieux dormir</a>
         </div>
     </div>
 
