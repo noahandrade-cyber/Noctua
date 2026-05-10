@@ -526,6 +526,8 @@ header {
     text-align: right;
     font-style: italic;
 }
+
+.fd2-cta {
     border-radius: 999px;
     border: 2px solid rgba(255, 215, 131, 0.9);
     background: linear-gradient(135deg, #ffe38e 0%, #ffd36b 42%, #f5b84f 100%);
@@ -1695,8 +1697,8 @@ html {
 .image-2-benefit {
     display: flex;
     align-items: flex-start;
-    gap: clamp(1rem, 2vw, 1.45rem);
-    margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
+    gap: clamp(1.3rem, 2.5vw, 1.95rem);
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .image-2-benefit .text {
@@ -1721,10 +1723,14 @@ html {
 }
 
 .image-2 .btn {
-    margin-top: clamp(7rem, 11vw, 9rem);
-    padding: 18px 38px;
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-    border-radius: 14px;
+    margin-top: clamp(6.25rem, 10vw, 8.25rem);
+    align-self: flex-start;
+    margin-left: clamp(1.2rem, 3vw, 2.25rem);
+    margin-right: 0;
+    width: fit-content;
+    padding: 20px 44px;
+    font-size: clamp(1.12rem, 2vw, 1.35rem);
+    border-radius: 16px;
 }
 
 @keyframes ctaGlowPulse {
@@ -2007,6 +2013,12 @@ html {
 }
 
 .image-3 .image-overlay h3 span {
+
+    .image-2-benefit {
+        gap: 1.1rem;
+        margin-bottom: 1.6rem;
+    }
+
     display: block;
 }
 
@@ -2014,15 +2026,12 @@ html {
     position: absolute;
     inset: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
     max-width: none;
     margin: 0;
     padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem);
     overflow: hidden;
     text-align: left;
+
 }
 
 .hero-image-scroll.image-3 .image-overlay h2,
@@ -2406,8 +2415,18 @@ html {
         line-height: 1.45;
     }
 
-    .hero,
+    .image-2-benefit {
+        gap: 1.1rem;
+        margin-bottom: 1.6rem;
+    }
+
     .section-1,
+
+    .image-2 .btn {
+        margin-right: 0;
+        padding: 18px 36px;
+        font-size: clamp(1rem, 3.8vw, 1.18rem);
+    }
     .section-2,
     .section-3,
     .container,
@@ -2825,7 +2844,7 @@ html, body {
 }
 
 .coffret-stars span{
-    margin-left:22px;
+    margin-left:6px;
 
     font-family:'Montserrat', sans-serif;
     font-size:clamp(1rem,1.4vw,1.4rem);
@@ -3250,7 +3269,7 @@ html, body {
                     <path d="M12 3a9 9 0 1 0 9 9c0-.3 0-.6-.1-.9A7 7 0 0 1 12 3z"/>
                 </svg>
             </div>
-            <div class="text"><strong>Endormez-vous en moins de 20 minutes</strong></div>
+            <div class="text"><strong>Contribue à un sommeil de qualité et réparateur</strong></div>
         </li>
         <li class="image-2-benefit">
             <div class="icon">
@@ -3308,7 +3327,7 @@ html, body {
         <!-- ÉTOILES -->
         <div class="coffret-stars">
             ★★★★★
-            <span>DÉJÀ + DE 200 UTILISATEURS CONQUIS</span>
+            <span>Tous nos testeurs sont conquis et ont adopté notre rituel</span>
         </div>
 
         <!-- LISTE -->
