@@ -1626,66 +1626,47 @@ html {
     inset: 0;
     align-self: start;
     justify-self: stretch;
+    width: min(100%, 52rem);
     padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 5vw, 3.5rem) clamp(1rem, 2vw, 1.5rem);
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
+    text-align: left;
 
     color: #f5d7a1;
     font-family: 'Playfair Display';
 }
 
-/* ===== TITRE CENTRÉ ===== */
-.overlay-content h1 {
-    text-align: center;
+/* ===== TITRE IMAGE-2 ALIGNÉ À GAUCHE ===== */
+.image-2 .overlay-content h1 {
+    text-align: left;
     font-size: clamp(2.25rem, 5vw, 4rem);
     line-height: 1.15;
     margin-bottom: 10px;
-    max-width: 14ch;
+    max-width: none;
+    width: 100%;
+}
+
+.image-2-proof {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+    margin-left: clamp(0.75rem, 1.5vw, 1.75rem);
+    font-size: clamp(1.4rem, 2.35vw, 2.15rem);
+    line-height: 1.25;
+    max-width: 100%;
+    width: max-content;
+    white-space: nowrap;
+    overflow-wrap: normal;
 }
 
 
 .overlay-content h1 span {
     color: #ffd36b;
     font-style: italic;
-}
-
-.image-2-proof {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 18px;
-    text-align: center;
-    color: #ffe4b3;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.15rem, 2.3vw, 1.7rem);
-    line-height: 1.2;
-    width: 100%;
-    max-width: none;
-    white-space: nowrap;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
-    transform: translateX(-14px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-@media (max-width: 640px) {
-    .image-2-proof {
-        justify-content: flex-start;
-        text-align: left;
-        padding-left: 4px; /* encore plus à gauche */
-        transform: translateX(-8px); /* pousse légèrement hors du padding parent */
-        white-space: normal; /* permet au texte de se couper si nécessaire */
-        font-size: clamp(0.95rem, 2.2vw, 1.05rem); /* un peu plus petit */
-        gap: 8px;
-    }
-    .image-2-proof .proof-star {
-        margin-right: 6px;
-    }
 }
 
 .proof-star {
@@ -1697,25 +1678,25 @@ html {
 
 /* LIGNE */
 .separator {
-    margin: 20px auto 40px;
+    margin: 0 0 30px;
 }
 
 /* ===== LISTE À GAUCHE (règles .benefits supprimées) ===== */
 
 .image-2-benefits {
     list-style: none;
-    margin: clamp(1rem, 2vw, 1.75rem) 0 0;
+    margin: clamp(5.5rem, 8vw, 7.5rem) 0 0;
     padding: 0;
     width: min(100%, 44rem);
     align-self: flex-start;
-    margin-left: clamp(1rem, 3vw, 2.2rem);
+    margin-left: clamp(-1rem, -5vw, -3.5rem);
 }
 
 .image-2-benefit {
     display: flex;
     align-items: flex-start;
-    gap: clamp(0.9rem, 1.8vw, 1.2rem);
-    margin-bottom: clamp(0.95rem, 1.8vw, 1.35rem);
+    gap: clamp(1rem, 2vw, 1.45rem);
+    margin-bottom: clamp(1.2rem, 2.2vw, 1.8rem);
 }
 
 .image-2-benefit .text {
@@ -1723,7 +1704,7 @@ html {
 }
 
 .image-2-benefit .text strong {
-    font-size: clamp(1.35rem, 2.6vw, 2.2rem);
+    font-size: clamp(1.45rem, 2.8vw, 2.45rem);
     line-height: 1.12;
     white-space: normal;
 }
@@ -1737,6 +1718,10 @@ html {
 .image-2-benefit .icon svg {
     width: clamp(0.95rem, 1.8vw, 1.35rem);
     height: clamp(0.95rem, 1.8vw, 1.35rem);
+}
+
+.image-2 .btn {
+    margin-top: clamp(7rem, 11vw, 9rem);
 }
 
 @keyframes ctaGlowPulse {
@@ -2087,22 +2072,22 @@ html {
     font-size: clamp(1.8rem, 4vw, 4rem);
     line-height: 1.08;
     margin-top: clamp(0.2rem, 0.8vw, 0.9rem);
-    margin-left: auto;
-    margin-right: auto;
+        margin-left: 0;
+        margin-right: 0;
     max-width: none;
-    width: max-content;
+        width: 100%;
     white-space: nowrap;
 }
 
 /* .image-2 .overlay-content .benefits rules removed */
 
-    .image-2 .overlay-content .image-2-proof {
-    align-self: flex-end;
-    margin-right: -160px;
-    margin-left: 1.25rem;
+    .image-2 .overlay-content {
+    align-self: flex-start;
+    margin-right: 0;
+    margin-left: 0;
     max-width: none;
-    white-space: nowrap;
-    transform: translateX(520px);
+    white-space: normal;
+    transform: none;
 }
 
 .image-overlay .problems li,
@@ -2346,10 +2331,11 @@ html {
         margin-top: clamp(0.1rem, 0.8vw, 0.6rem);
         white-space: nowrap;
         font-size: clamp(18px, 4vw, 30px);
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 0;
+        margin-right: 0;
         max-width: none;
-        width: max-content;
+        width: auto;
+        text-align: left;
     }
 
     .image-2 .overlay-content {
@@ -2367,18 +2353,11 @@ html {
     position: relative;
 } 
 
-    .image-2-proof {
-        margin-bottom: 10px;
-        font-size: clamp(0.95rem, 3.4vw, 1.15rem);
-        white-space: normal;
-        transform: translateX(-8px);
-        gap: 8px;
-    }
 
     .image-2-benefits {
         width: 100%;
-        margin-left: 0;
-        margin-top: 0.9rem;
+        margin-left: clamp(-1rem, -5vw, -3.5rem);
+        margin-top: 2rem;
     }
 
     .image-2-benefit {
@@ -2723,18 +2702,11 @@ html {
         font-size: clamp(0.82rem, 3vw, 1rem);
     }
 
-    .image-2-proof {
-        margin-top: -2px;
-        margin-bottom: 10px;
-        font-size: clamp(1.18rem, 4.4vw, 1.5rem);
-        line-height: 1.3;
-        width: max-content;
-        max-width: none;
-        white-space: nowrap;
-        text-align: right;
-        align-self: flex-end;
-        margin-right: -160px;
-        transform: translateX(520px);
+    .image-2-benefits {
+        margin-top: 5rem;
+        margin-right: 0;
+        transform: none;
+        margin-left: 0;
     }
 
     .testimonials-head .section-tag {
@@ -3235,7 +3207,7 @@ html, body {
         </h1>
 
         <p>
-            Vous n’êtes pas seul, 1 personne sur 3 souffrent
+            Vous n’êtes pas seul, 1 personne sur 3 souffre
             <br>
             de troubles du sommeil.
         </p>
@@ -3264,7 +3236,7 @@ html, body {
     <div class="overlay-content reveal">
 
     <h1>La solution naturelle pour <span>transformer</span> vos nuits.</h1>
-    <p class="image-2-proof"><span class="proof-star" aria-hidden="true">★</span><span>92% des utilisateurs s'endorment plus rapidement dés la première semaine</span></p>
+    <p class="image-2-proof"><span class="proof-star" aria-hidden="true">★</span><span>92% des testeurs avouent avoir un sommeil de qualité avec le rituel</span></p>
 
     <div class="separator"></div>
 
@@ -3283,7 +3255,7 @@ html, body {
                     <path d="M4 12c2-3 4-5 8-5s6 2 8 5c-2 3-4 5-8 5s-6-2-8-5z"/>
                 </svg>
             </div>
-            <div class="text"><strong>Calme le mental dès les premiers instants</strong></div>
+            <div class="text"><strong>Aide à calmer le mental dès les premiers instants</strong></div>
         </li>
         <li class="image-2-benefit">
             <div class="icon">
@@ -3291,7 +3263,7 @@ html, body {
                     <path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
                 </svg>
             </div>
-            <div class="text"><strong>Sommeil profond et réparateur</strong></div>
+            <div class="text"><strong>Favorise un sommeil profond et rapide</strong></div>
         </li>
         <li class="image-2-benefit">
             <div class="icon">
@@ -3302,6 +3274,8 @@ html, body {
             <div class="text"><strong>Votre routine du soir, simple et naturel</strong></div>
         </li>
     </ul>
+
+    <a href="#" class="btn">Je transforme mes nuits</a>
 
 </div>
 
