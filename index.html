@@ -271,9 +271,42 @@ header {
     font-size: 20px;
 }
 
+/* Espace sous rit.png égal à la hauteur du bandeau roulant */
+.bas-rit-section {
+    margin-top: var(--marquee-height);
+    display: flex;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.bas-rit-section .hero-bottom-image {
+    width: 116%;
+    max-width: 116%;
+}
+
 @keyframes scrollText {
     from { transform: translateX(100%); }
     to { transform: translateX(-100%); }
+}
+
+/* Mobile : s'assurer que bas_rit.png est entièrement visible */
+@media (max-width: 768px) {
+    .bas-rit-section {
+        margin-top: var(--marquee-height);
+        padding: 0 12px;
+        overflow: visible;
+        display: block;
+        text-align: center;
+    }
+    .bas-rit-section .hero-bottom-image {
+        width: 124%;
+        max-width: 124%;
+    }
+    .hero-image-scroll img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
 }
 
 .hero-cta {
@@ -3216,7 +3249,7 @@ html, body {
         <img src="images/baniere.png" class="hero-bg">
 
         <div class="hero-cta">
-            <a href="#" class="cta-button">Je veux mieux dormir</a>
+            <a href="#" class="cta-button">Je découvre mon rituel</a>
         </div>
     </div>
 
@@ -3239,13 +3272,12 @@ html, body {
     <div class="sleep-top">
 
         <h1>
-            Vous avez du mal à dormir ?
+            Vous avez du mal à déconnecter ?
         </h1>
 
         <p>
-            Vous n’êtes pas seul, 1 personne sur 3 souffre
-            <br>
-            de troubles du sommeil.
+            Vous n’êtes pas seul, beaucoup d'entre nous avons des difficultés à décompresser !
+            
         </p>
 
     </div>
@@ -3271,8 +3303,8 @@ html, body {
 
     <div class="overlay-content reveal">
 
-    <h1>La solution naturelle pour <span>transformer</span> vos nuits.</h1>
-    <p class="image-2-proof"><span class="proof-star" aria-hidden="true">★</span><span>92% des testeurs avouent avoir un sommeil de qualité avec le rituel</span></p>
+    <h1>Le ritual cocoon qui aide à déconnecter </h1>
+    <p class="image-2-proof"><span class="proof-star" aria-hidden="true">★</span><span>92% des testeurs se sentent plus détendus aprés le rituel*</span></p>
 
     <div class="separator"></div>
 
@@ -3283,7 +3315,7 @@ html, body {
                     <path d="M12 3a9 9 0 1 0 9 9c0-.3 0-.6-.1-.9A7 7 0 0 1 12 3z"/>
                 </svg>
             </div>
-            <div class="text"><strong>Contribue à un sommeil de qualité et réparateur</strong></div>
+            <div class="text"><strong>Contribue à un moment de détente et de bien-être</strong></div>
         </li>
         <li class="image-2-benefit">
             <div class="icon">
@@ -3291,7 +3323,7 @@ html, body {
                     <path d="M4 12c2-3 4-5 8-5s6 2 8 5c-2 3-4 5-8 5s-6-2-8-5z"/>
                 </svg>
             </div>
-            <div class="text"><strong>Aide à calmer le mental dès les premiers instants</strong></div>
+            <div class="text"><strong>Aide à apaiser l'esprit dès les premiers instants</strong></div>
         </li>
         <li class="image-2-benefit">
             <div class="icon">
@@ -3299,7 +3331,7 @@ html, body {
                     <path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
                 </svg>
             </div>
-            <div class="text"><strong>Favorise un sommeil profond et rapide</strong></div>
+            <div class="text"><strong>Favorise la relaxation et le lâcher prise</strong></div>
         </li>
         <li class="image-2-benefit">
             <div class="icon">
@@ -3311,7 +3343,7 @@ html, body {
         </li>
     </ul>
 
-    <a href="#" class="btn">Je transforme mes nuits</a>
+    <a href="#" class="btn">JE CRÉE MON RITUEL DU SOIR</a>
 
 </div>
 
@@ -3422,7 +3454,7 @@ html, body {
         </div>
         
         <div class="step step-3">
-            <h3>3. Dormez</h3>
+            <h3>3. Déconnectez</h3>
             <p>
                 <span class="line">Masque + diffuseur</span>
                 <span class="line">d'ambiance relaxante</span>
@@ -3431,14 +3463,16 @@ html, body {
         </div>
         
         <div class="rituel-bottom">
-            En quelques instants. Votre corps s'abandonne À la douceur du sommeil.
+            En quelques instants. Votre corps s'abandonne À la douceur du rituel.
         </div>
         
     </div>
 
 </section>
 
-
+<section class="bas-rit-section">
+    <img src="images/bas_rit.png" class="hero-bottom-image" alt="bas de rituel">
+</section>
 
 
 
